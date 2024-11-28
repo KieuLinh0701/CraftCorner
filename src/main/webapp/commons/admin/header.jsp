@@ -63,48 +63,53 @@
 			<ul>
 				<li class="admin-theme dropdown active"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Product Management </a>
+						Product</a>
 					<ul class="dropdown-menu">
-						<li><a href="/kiemtraJDBC/views/admin/categorylist.jsp">View
-								Products</a></li>
-						<li><a href="/kiemtraJDBC/views/admin/categoryadd.jsp">Add
-								Products</a></li>
-					</ul></li>
-
-				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#"> Order
-						Management </a>
-					<ul class="dropdown-menu">
-						<li><a href="/kiemtraJDBC/views/admin/categorylist.jsp">View
-								Orders</a></li>
-						<li><a href="/kiemtraJDBC/views/admin/categoryadd.jsp">Add
-								Orders?nên có cái này ko? (Mi)</a></li>
-						<li><a href="/kiemtraJDBC/views/admin/categoryedit.jsp"></a></li>
+						<li><a href="#">Product Management</a></li>
+						<li><a href="#">Category Management</a></li>
+						<li><a href="#">Inventory Management</a></li>
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Customer Management </a>
-					<ul class="dropdown-menu">
-						<li><a href="/kiemtraJDBC/views/admin/categorylist.jsp">View
-								Customers</a></li>
-					</ul></li>
-
-				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Management </a>
+						Finance</a>
 					<ul class="dropdown-menu">
 						<li><a href="${URL}admin/payment-method"> Payment Method
 						</a></li>
-						<li><a href="${URL}admin/promote"> Promote </a></li>
-						<li><a href="${URL}admin/appointment-calendar">
-								Appointment </a></li>
+						<li><a href="#">Revenue Management</a></li>
+						<li><a href="#">Transaction History</a></li>
 					</ul></li>
+
+				<li class="admin-theme dropdown active"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#">
+						Content</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Blog Management</a></li>
+						<li><a href="#">Design Management</a></li>
+					</ul></li>
+
+				<li class="admin-theme dropdown active"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#">
+						Account</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Customer Management</a></li>
+						<li><a href="#">Employee Management</a></li>
+					</ul></li>
+					
+				<li class="admin-theme"><a href="#"
+					onclick="showCustomerTheme()"> Order</a></li>
+
+
+				<li class="admin-theme"><a href="${URL}admin/promote"> Promotion</a></li>
+
+				<li class="admin-theme"><a
+					href="${URL}admin/appointment-calenda"> Appointment</a></li>
 
 				<li class="admin-theme"><a href="javascript:void(0)"
 					onclick="showCustomerTheme()"> Customer theme </a></li>
-				
-				<li class="customer-theme"><a href="${pageContext.request.contextPath}/home"> Home </a></li>
+
+				<li class="customer-theme"><a
+					href="${pageContext.request.contextPath}/home"> Home </a></li>
 				<li class="customer-theme"><a href="#"> Shop </a></li>
 				<li class="customer-theme"><a href="#"> Blogs </a></li>
 				<li class="customer-theme"><a href="#"> Design ideas </a></li>
