@@ -274,7 +274,7 @@
 	    let priceDiscountElement = document.getElementById("priceDiscount");
 		
 	    totalElement1.textContent = totalString;
-	    totalElement2.textContent = totalString;
+	    totalElement2.value = totalString;
 	    priceDiscountElement.textContent = discountString;
 	}
 

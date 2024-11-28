@@ -14,4 +14,9 @@ public class CartService implements ICartService{
 		return cartDao.findByUser(user_id);
 	}
 
+	@Override
+	public void delete(int id) throws Exception {
+		cartDao.delete(id);
+	}
+
 }

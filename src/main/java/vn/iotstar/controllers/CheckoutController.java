@@ -1,11 +1,7 @@
 package vn.iotstar.controllers;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -111,7 +107,7 @@ public class CheckoutController extends HttpServlet {
 			User user = userService.findById(user_id);
 			order.setUser(user);
 			
-			int total_price = Integer.parseInt(req.getParameter("user_id"));
+			int total_price = Integer.parseInt(req.getParameter("total_price"));
 			order.setTotal_price(total_price);
 			
 			order.setOrder_date(new Date());
@@ -145,6 +141,11 @@ public class CheckoutController extends HttpServlet {
 				orderDetail.setOrder(newOrder);
 				orderDetail.setPrice(x.getProduct().getPrice());
 				detailService.insert(orderDetail);
+			}
+			try {
+				cartService.delete(cart.getCart_id());
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			
 			if (payment.getBankName().contains("COD")) {
