@@ -26,4 +26,9 @@ public class PromoteService implements IPromoteService{
 		return promoteDao.findPromoteForOrder(totalPrice);
 	}
 
+	@Override
+	public void update(Promote promote) {
+		promoteDao.update(promote);
+	}
+
 }

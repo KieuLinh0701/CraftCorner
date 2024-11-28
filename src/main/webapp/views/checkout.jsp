@@ -123,7 +123,7 @@
 							</div>
 						</div>
 						<form action="${pageContext.request.contextPath}/order"
-							method="post">
+							id="orderForm" method="post">
 							<input type="hidden" name="user_id" id="user_id"
 								value="${sessionScope.account.id}">
 							<div class="panel-body row">
@@ -147,6 +147,8 @@
 															<td><input type="radio" name="payment"
 																value="${payment.id}" style="float: right;"></td>
 														</tr>
+														<div id="paymentError" class="error-message"
+															style="color: red; font-style: italic; font-size: 12px;"></div>
 													</c:forEach>
 												</table>
 											</div>
@@ -210,7 +212,8 @@
 							<li class="checkout-total-price"><em>Total</em> <strong
 								class="price" id="total" name="total">${total}</strong></li>
 						</ul>
-						<input type="hidden" name="total_price" id="total_price" value="${total}">
+						<input type="hidden" name="total_price" id="total_price"
+							value="${total}">
 					</div>
 					<div class="clearfix"></div>
 					<button class="btn btn-primary pull-right" type="submit"
@@ -227,9 +230,30 @@
 	</div>
 	<!-- END SIDEBAR & CONTENT -->
 </div>
-</div>
 
 <script>
+
+document.getElementById("orderForm").addEventListener("submit", function (event) {
+    const paymentMethods = document.getElementsByName("payment");
+    let isChecked = false;
+
+    // Kiểm tra xem có radio nào được chọn hay không
+    for (let i = 0; i < paymentMethods.length; i++) {
+        if (paymentMethods[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+
+    const errorDiv = document.getElementById("paymentError");
+    if (!isChecked) {
+        event.preventDefault();
+        errorDiv.textContent = "Please select a payment method!";
+    } else {
+        errorDiv.textContent = "";
+    }
+});
+
 	function modify() {
 		var div1 = document.getElementById("myDiv1");
 		var div2 = document.getElementById("myDiv2");

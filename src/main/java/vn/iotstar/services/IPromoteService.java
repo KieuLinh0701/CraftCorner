@@ -11,5 +11,6 @@ public interface IPromoteService {
 	List<Promote> findPromoteForOrder(int totalPrice);
 	
 	Promote findById(int id);
-
+	
+	void update(Promote promote);
 }

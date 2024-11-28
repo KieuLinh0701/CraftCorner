@@ -122,10 +122,16 @@ public class CheckoutController extends HttpServlet {
 			PaymentMethod payment = paymentService.findById(payment_id);
 			order.setPayment(payment);
 			
-			int id = Integer.parseInt(req.getParameter("promote"));
-			IPromoteService promoteService = new PromoteService();
-			Promote promote = promoteService.findById(id);
-			order.setPromote(promote);
+			String promoteIdString = req.getParameter("promote");
+			if (promoteIdString != null) {
+				int id = Integer.parseInt(promoteIdString);
+				IPromoteService promoteService = new PromoteService();
+				Promote promote = promoteService.findById(id);
+				order.setPromote(promote);
+				
+				promote.setQuantityUsed(promote.getQuantityUsed()+1);
+				promoteService.update(promote);
+			}
 			
 			IOrderService orderService = new OrderService();
 			Order newOrder = orderService.insert(order);
@@ -142,6 +148,7 @@ public class CheckoutController extends HttpServlet {
 				orderDetail.setPrice(x.getProduct().getPrice());
 				detailService.insert(orderDetail);
 			}
+			
 			try {
 				cartService.delete(cart.getCart_id());
 			} catch (Exception e) {

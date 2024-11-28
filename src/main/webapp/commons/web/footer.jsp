@@ -21,7 +21,7 @@
 				<address class="margin-bottom-40">
 					1, Vo Van Ngan street, Linh Chieu, Thu Duc, Ho Chi Minh , Viet Nam<br>
 					Phone: 012 123 2345<br> Email: <a
-						href="mailto:craftconnerweb@gmail.com" style="color:white;">craftconnerweb@gmail.com</a><br>
+						href="mailto:craftcornerfurniture@gmail.com" style="color:white;">craftcornerfurniture@gmail.com</a><br>
 				</address>
 			</div>
 		</div>
