@@ -52,7 +52,7 @@ public class Order implements Serializable {
     private PaymentMethod payment;
 	
 	@ManyToOne
-	@JoinColumn(name = "promote_id", referencedColumnName = "id", nullable = false)
+	@JoinColumn(name = "promote_id", referencedColumnName = "id", nullable = true)
     private Promote promote;
 	
 	@OneToMany(mappedBy="order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

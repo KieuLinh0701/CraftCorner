@@ -203,14 +203,14 @@
 						<ul>
 							<li><em>Sub total</em> <strong class="price" name="subTotal"
 								id="subTotal">${total}</strong></li>
-							<li><em>Shipping cost</em> <strong class="price">0</strong>
-							</li>
 							<li><em>Voucher</em> <strong class="price"
 								id="priceDiscount" name="priceDiscount">- 0</strong></li>
+							<li><em>Shipping cost</em> <strong class="price">0</strong>
+							</li>
 							<li class="checkout-total-price"><em>Total</em> <strong
-								class="price">56.00</strong></li>
-							<input type="hidden" name="total_price" id="total_price" value="">
+								class="price" id="total" name="total">${total}</strong></li>
 						</ul>
+						<input type="hidden" name="total_price" id="total_price" value="${total}">
 					</div>
 					<div class="clearfix"></div>
 					<button class="btn btn-primary pull-right" type="submit"
@@ -253,22 +253,29 @@
 			div1.style.display = "block";
 		}
 	}
-	function clickDiscount(discount) {
-		const subTotalElement = document.getElementById("subTotal");
-		const subTotalString = subTotalElement.textContent.trim();
-		const subTotal = parseInt(subTotalString);
-
-		const percentage = parseInt(discount.discountPercent);
-		const discountAmount = subTotal * percentage;
-
-		updatePrice(discountAmount); // Cập nhật giá trị giảm giá vào giao diện
+	function clickDiscount(discountPercent) {
+	    const subTotalElement = document.getElementById("subTotal");
+	    const subTotalString = subTotalElement.textContent.trim();
+	    const subTotal = parseInt(subTotalString);
+	    
+	    const percentage = parseInt(discountPercent);
+	    const discountAmount = subTotal * (percentage / 100);
+	    const total = subTotal - discountAmount;
+	    
+	    updatePrice(total, discountAmount);
 	}
 
-	function updatePrice(newPrice) {
-		console.log("Updating price to:", newPrice);
-		let discountValue = - newPrice;
-		let priceDiscountElement = document.getElementById("priceDiscount");
-	    priceDiscountElement.textContent = discountValue;
+	function updatePrice(total, discountAmount) {
+	    let totalString = String(total);
+	    let discountString = "- " + String(discountAmount);
+
+	    let totalElement1 = document.getElementById("total");
+	    let totalElement2 = document.getElementById("total_price");
+	    let priceDiscountElement = document.getElementById("priceDiscount");
+		
+	    totalElement1.textContent = totalString;
+	    totalElement2.textContent = totalString;
+	    priceDiscountElement.textContent = discountString;
 	}
 
 	function cancelOrder() {
