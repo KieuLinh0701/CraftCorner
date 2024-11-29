@@ -56,7 +56,8 @@ public class User implements Serializable{
 	@JoinColumn(name = "roleId")
 	private Role role;
 	
-	@OneToOne
+	// CascadeType.ALL để tự động lưu Address khi cập nhật User
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
 	private Address address;
 

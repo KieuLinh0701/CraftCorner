@@ -150,4 +150,21 @@ public class UserDao implements IUserDao {
 		return false;
 	}
 
+	@Override
+	public boolean checkPassword(String email, String password) {
+		EntityManager enma = JPAConfig.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM User u WHERE u.email = :email AND u.password = :password";
+            TypedQuery<User> query = enma.createQuery(jpql, User.class);
+            query.setParameter("email", email);
+            query.setParameter("password", password);  // Mật khẩu cần được mã hóa trước khi lưu
+            User user = query.getSingleResult();
+            return user != null;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            enma.close();
+        }
+	}
+
 }
