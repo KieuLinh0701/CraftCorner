@@ -38,7 +38,7 @@ public class Blog implements Serializable {
     private User user;
 
     // Ngày tạo (chỉ lưu ngày, tháng, năm)
-    @Column(name = "created_at", columnDefinition = "DATE DEFAULT CURRENT_DATE")
+    @Column(name = "created_at")
     private LocalDate createdAt;
     
  // Trạng thái (1 là đã xuất bản, 0 là chưa xuất bản, v.v.)

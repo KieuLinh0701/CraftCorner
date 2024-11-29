@@ -36,7 +36,7 @@ public class Designs implements Serializable {
 	private String image;
 
 	// Ngày tạo (chỉ lưu ngày tháng năm)
-	@Column(name = "create_date", columnDefinition = "DATE DEFAULT CURRENT_DATE")
+	@Column(name = "create_date")
 	private LocalDate createDate;
 	
 	@ManyToOne
