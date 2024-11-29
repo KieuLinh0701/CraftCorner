@@ -16,4 +16,24 @@ public class DesignService implements IDesignService {
 		return designDao.findAll();
 	}
 
+	@Override
+	public Designs findById(int id) {
+		return designDao.findById(id);
+	}
+
+	@Override
+	public void insert(Designs design) {
+		insert(design);
+	}
+
+	@Override
+	public void update(Designs design) {
+		update(design);
+	}
+
+	@Override
+	public void delete(int id) {
+		delete(id);
+	}
+
 }

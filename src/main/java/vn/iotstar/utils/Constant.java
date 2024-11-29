@@ -10,7 +10,6 @@ public class Constant {
 
 	//Địa chỉ file .jsp
 	public static final String HOME = "/views/home.jsp";
-	public static final String ADMIN_HOME = "/views/admin_home.jsp";
 	public static final String REGISTER = "/views/register.jsp";
 	public static final String LOGIN = "/views/login.jsp";
 	public static final String VERIFY_CODE_ACCOUNT = "/views/verifyCodeAccount.jsp";
@@ -21,6 +20,9 @@ public class Constant {
 	public static final String CHECKOUT = "/views/checkout.jsp";
 	public static final String ACCOUNT = "/views/myAccount.jsp";
 	public static final String ORDER_SUCCESS = "/views/orderSuccess.jsp";
+	
+	public static final String ADMIN_HOME = "/views/admin/home.jsp";
+	public static final String DESIGN_DETAIL_MANAGEMENT = "/views/admin/design-detail.jsp";
 	public static final String DESIGN_MANAGEMENT = "/views/admin/designManagement.jsp";
 	
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
