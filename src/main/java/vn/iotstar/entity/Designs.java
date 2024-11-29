@@ -12,11 +12,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "designs")
+@NamedQuery(name = "Designs.findAll", query = "SELECT v FROM Designs v")
 public class Designs implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class Designs implements Serializable {
 	@Column(name = "title", columnDefinition = "NVARCHAR(255) NOT NULL")
 	private String title;
 
-	@Column(name = "content", columnDefinition = "TEXT NOT NULL")
+	@Column(name = "content", columnDefinition = "NVARCHAR(MAX) NOT NULL")
 	private String content;
 
 	@Column(name = "image", columnDefinition = "NVARCHAR(500) NULL")

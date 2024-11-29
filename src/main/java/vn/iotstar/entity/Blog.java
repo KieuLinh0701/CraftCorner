@@ -26,7 +26,7 @@ public class Blog implements Serializable {
     @Column(name = "blog_title", columnDefinition = "NVARCHAR(255) NOT NULL")
     private String blogTitle;
 
-    @Column(name = "content", columnDefinition = "TEXT NOT NULL")
+    @Column(name = "content", columnDefinition = "NVARCHAR(MAX) NOT NULL")
     private String content;
 
     @Column(name = "image", columnDefinition = "NVARCHAR(500) NULL")

@@ -85,7 +85,7 @@
 						Content</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Blog Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/design">Design Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/designs">Design Management</a></li>
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
