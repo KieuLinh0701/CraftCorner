@@ -44,4 +44,69 @@ public class Promote implements Serializable {
 
     @Column(name = "min_order_total", nullable = false)
     private Double minOrderTotal;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getVoucherCode() {
+		return voucherCode;
+	}
+
+	public void setVoucherCode(String voucherCode) {
+		this.voucherCode = voucherCode;
+	}
+
+	public LocalDateTime getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDateTime startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDateTime getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDateTime endDate) {
+		this.endDate = endDate;
+	}
+
+	public Integer getDiscountPercent() {
+		return discountPercent;
+	}
+
+	public void setDiscountPercent(Integer discountPercent) {
+		this.discountPercent = discountPercent;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Integer getQuantityUsed() {
+		return quantityUsed;
+	}
+
+	public void setQuantityUsed(Integer quantityUsed) {
+		this.quantityUsed = quantityUsed;
+	}
+
+	public Double getMinOrderTotal() {
+		return minOrderTotal;
+	}
+
+	public void setMinOrderTotal(Double minOrderTotal) {
+		this.minOrderTotal = minOrderTotal;
+	}
+    
 }
