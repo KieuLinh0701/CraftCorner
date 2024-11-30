@@ -29,7 +29,7 @@
 								| <a href="${pageContext.request.contextPath}/register">Register</a>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/myaccount">${sessionScope.account.fullname}</a>
+							<a href="${pageContext.request.contextPath}/admin/myaccount">${sessionScope.account.fullname}</a>
 								| <a href="${pageContext.request.contextPath}/logout">Logout</a>
 						</c:otherwise>
 					</c:choose></li>
@@ -43,7 +43,7 @@
 <!-- BEGIN HEADER -->
 <div class="header">
 	<div class="container">
-		<a class="site-logo" href="${pageContext.request.contextPath}/home"><img
+		<a class="site-logo" href="${pageContext.request.contextPath}/admin/home"><img
 			src="${URL}assets/frontend/layout/img/logos/logo2.png"
 			alt="Carft Corner"></a> <a href="javascript:void(0);"
 			class="mobi-toggler"><i class="fa fa-bars"></i></a>
@@ -109,7 +109,7 @@
 					onclick="showCustomerTheme()"> Customer theme </a></li>
 
 				<li class="customer-theme"><a
-					href="${pageContext.request.contextPath}/home"> Home </a></li>
+					href="${pageContext.request.contextPath}/admin/home"> Home </a></li>
 				<li class="customer-theme"><a href="#"> Shop </a></li>
 				<li class="customer-theme"><a href="#"> Blogs </a></li>
 				<li class="customer-theme"><a href="#"> Design ideas </a></li>

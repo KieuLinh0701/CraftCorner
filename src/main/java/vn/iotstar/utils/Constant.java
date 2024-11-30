@@ -19,6 +19,7 @@ public class Constant {
 	public static final String CART = "/views/cart.jsp";
 	public static final String CHECKOUT = "/views/checkout.jsp";
 	public static final String ACCOUNT = "/views/myAccount.jsp";
+	public static final String ADMIN_ACCOUNT = "/views/admin/myAccount.jsp";
 	public static final String ORDER_SUCCESS = "/views/orderSuccess.jsp";
 	
 	public static final String ADMIN_HOME = "/views/admin/home.jsp";
