@@ -12,6 +12,10 @@ public interface IPromoteDao {
 	
 	Promote findById(int id);
 	
-	void update(Promote promote);
+	void insert(Promote promote);
+
+    void update(Promote promote);
+
+    void delete(Promote promote);
 
 }
