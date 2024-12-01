@@ -18,99 +18,93 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.List;
 
-@WebServlet(urlPatterns = { "/admin/payment-method/add"})
+@WebServlet(urlPatterns = { "/admin/payment-method/add" })
 public class PaymentMethodAddController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
+	private static final long serialVersionUID = 1L;
+	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
+	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
+	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
-    private final IPaymentService paymentMethodService = new PaymentService();
+	private final IPaymentService paymentMethodService = new PaymentService();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(Constant.PAYMENT_METHOD_ADD).forward(req, resp);
-    }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher(Constant.PAYMENT_METHOD_ADD).forward(req, resp);
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!JakartaServletFileUpload.isMultipartContent(req)) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request does not contain upload data");
-            return;
-        }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		if (!JakartaServletFileUpload.isMultipartContent(req)) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Request does not contain upload data");
+			return;
+		}
 
-        DiskFileItemFactory.Builder builder = DiskFileItemFactory.builder();
-        builder.setBufferSize(MEMORY_THRESHOLD);
+		DiskFileItemFactory.Builder builder = DiskFileItemFactory.builder();
+		builder.setBufferSize(MEMORY_THRESHOLD);
 
-        String tempDir = System.getProperty("java.io.tmpdir");
-        builder.setPath(Path.of(tempDir));
+		String tempDir = System.getProperty("java.io.tmpdir");
+		builder.setPath(Path.of(tempDir));
 
-        DiskFileItemFactory factory = builder.get();
-        JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
+		DiskFileItemFactory factory = builder.get();
+		JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
 
-        upload.setFileSizeMax(MAX_FILE_SIZE);
-        upload.setSizeMax(MAX_REQUEST_SIZE);
+		upload.setFileSizeMax(MAX_FILE_SIZE);
+		upload.setSizeMax(MAX_REQUEST_SIZE);
 
-        String webappPath = getServletContext().getRealPath("/");
-        File rootDir = new File(webappPath).getParentFile().getParentFile();
+		String uploadPath = Constant.UPLOAD_DIRECTORY;
+		File uploadDir = new File(uploadPath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdir();
+		}
+		try {
+			List<FileItem> formItems = upload.parseRequest(req);
+			PaymentMethod newPaymentMethod = new PaymentMethod();
 
-        String uploadPath = rootDir + File.separator + "src" + File.separator + "main" + 
-                          File.separator + "webapp" + File.separator + Constant.UPLOAD_DIRECTORY;
-                          
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
+			for (FileItem item : formItems) {
+				if (item.isFormField()) {
+					String fieldName = item.getFieldName();
+					String fieldValue = item.getString();
 
-        try {
-            List<FileItem> formItems = upload.parseRequest(req);
-            PaymentMethod newPaymentMethod = new PaymentMethod();
+					switch (fieldName) {
+					case "bankName":
+						newPaymentMethod.setBankName(fieldValue);
+						break;
+					case "accountNumber":
+						newPaymentMethod.setAccountNumber(fieldValue);
+						break;
+					case "accountOwner":
+						newPaymentMethod.setAccountOwner(fieldValue);
+						break;
+					case "status":
+						newPaymentMethod.setStatus(Integer.parseInt(fieldValue));
+						break;
+					}
+				} else {
+					String fileName = new File(item.getName()).getName();
+					if (fileName != null && !fileName.isEmpty()) {
 
-            for (FileItem item : formItems) {
-                if (item.isFormField()) {
-                    String fieldName = item.getFieldName();
-                    String fieldValue = item.getString();
+						String filePath = uploadPath + File.separator + fileName;
+						File storeFile = new File(filePath);
 
-                    switch (fieldName) {
-                        case "bankName":
-                            newPaymentMethod.setBankName(fieldValue);
-                            break;
-                        case "accountNumber":
-                            newPaymentMethod.setAccountNumber(fieldValue);
-                            break;
-                        case "accountOwner":
-                            newPaymentMethod.setAccountOwner(fieldValue);
-                            break;
-                        case "status":
-                            newPaymentMethod.setStatus(Integer.parseInt(fieldValue));
-                            break;
-                    }
-                } else {
-                    String fileName = new File(item.getName()).getName();
-                    if (fileName != null && !fileName.isEmpty()) {
-                        String newFileName = new Utils().generateUniqueFileName(fileName);
-                        String filePath = uploadPath + File.separator + newFileName;
-                        File storeFile = new File(filePath);
+						try (InputStream input = item.getInputStream();
+								OutputStream output = new FileOutputStream(storeFile)) {
+							byte[] buffer = new byte[1024];
+							int length;
+							while ((length = input.read(buffer)) > 0) {
+								output.write(buffer, 0, length);
+							}
+						}
+						newPaymentMethod.setImage(fileName);
+					}
+				}
+			}
 
-                        try (InputStream input = item.getInputStream();
-                             OutputStream output = new FileOutputStream(storeFile)) {
-                            byte[] buffer = new byte[1024];
-                            int length;
-                            while ((length = input.read(buffer)) > 0) {
-                                output.write(buffer, 0, length);
-                            }
-                        }
-                        newPaymentMethod.setImage("/upload/" + newFileName);
-                    }
-                }
-            }
+			paymentMethodService.insert(newPaymentMethod);
+			resp.sendRedirect(req.getContextPath() + "/admin/payment-method");
 
-            paymentMethodService.insert(newPaymentMethod);
-            resp.sendRedirect(req.getContextPath() + "/admin/payment-method");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error during file upload: " + e.getMessage());
-        }
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error during file upload: " + e.getMessage());
+		}
+	}
 }
