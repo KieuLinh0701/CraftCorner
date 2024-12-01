@@ -75,5 +75,14 @@ public class UserService implements IUserService{
 	public boolean checkPassword(String email, String password) {
 		return userDao.checkPassword(email, password);
 	}
-
+//	public List<User> findAllCustomers() {
+//        return userDao.findAll().stream()
+//                       .filter(user -> user.getRole().getId() == 2) // Giả sử roleId = 2 là khách hàng
+//                       .toList();
+//    }
+	
+	@Override
+    public List<User> findAllCustomers() {
+        return userDao.findAllCustomers();
+    }
 }

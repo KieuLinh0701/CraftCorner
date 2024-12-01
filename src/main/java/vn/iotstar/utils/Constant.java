@@ -28,5 +28,6 @@ public class Constant {
 	
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";
-
+	// Đường dẫn thư mục lưu hình ảnh (thay đổi theo môi trường của bạn)
+    public static final String DIR = "C:\\upload";
 }

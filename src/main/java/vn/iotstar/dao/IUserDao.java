@@ -29,4 +29,7 @@ public interface IUserDao {
 	Boolean checkCode(String email, String code);
 	
 	boolean checkPassword(String email, String password);
+	
+	List<User> findAllCustomers();
+	
 }

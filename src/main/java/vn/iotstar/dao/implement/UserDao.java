@@ -166,5 +166,15 @@ public class UserDao implements IUserDao {
             enma.close();
         }
 	}
-
+	@Override
+    public List<User> findAllCustomers() {
+        EntityManager em = JPAConfig.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM User u WHERE u.role.id = 2";
+            Query query = em.createQuery(jpql, User.class);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }
