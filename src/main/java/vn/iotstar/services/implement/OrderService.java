@@ -14,4 +14,27 @@ public class OrderService implements IOrderService{
 		return orderDao.insert(order);
 	}
 
+	public Long getTotalOrders(String periodType, String periodValue) {
+        return orderDao.getTotalOrders(periodType, periodValue);
+    }
+
+    public Double getTotalRevenue(String periodType, String periodValue) {
+        return orderDao.getTotalRevenue(periodType, periodValue);
+    }
+
+    public String getHighestRevenueProduct(String periodType, String periodValue) {
+        return orderDao.getHighestRevenueProduct(periodType, periodValue);
+    }
+
+    public String getLowestRevenueProduct(String periodType, String periodValue) {
+        return orderDao.getLowestRevenueProduct(periodType, periodValue);
+    }
+
+    public String getMostPurchasedProduct(String periodType, String periodValue) {
+        return orderDao.getMostPurchasedProduct(periodType, periodValue);
+    }
+
+    public String getLeastPurchasedProduct(String periodType, String periodValue) {
+        return orderDao.getLeastPurchasedProduct(periodType, periodValue);
+    }
 }
