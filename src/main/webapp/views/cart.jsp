@@ -54,8 +54,10 @@
 											<td class="goods-page-price"><strong>${cartItem.product.price}</strong>
 											</td>
 											<td class="goods-page-total"><strong>${cartItem.product.price * cartItem.quantity}</strong>
+											<td>
+											    <a href="javascript:void(0);" onclick="updateQuantity('${cartItem.cartItem_id}', this)">&#8635</a>
 											</td>
-											<td class="del-goods-col"><a class="del-goods" href="${pageContext.request.contextPath}/cart/delete">&nbsp;</a>
+											<td class="del-goods-col"><a class="del-goods" href="<c:url value='/delete?id=${cartItem.cartItem_id }'/>">&nbsp;</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -72,7 +74,7 @@
 						<button class="btn btn-default" onclick="continueShopping()" style="background:black; border:black;">
 							Continue shopping <i class="fa fa-shopping-cart"></i>
 						</button>
-						<button class="btn btn-default" onclick="continueShopping()" style="margin-left: 15px; background:black; border:black;">
+						<button class="btn btn-default" onclick="deleteCart()" style="margin-left: 15px; background:black; border:black;">
 							Delete cart <i class="fa fa-shopping-cart"></i>
 						</button>
 						<button class="btn btn-primary" onclick="checkout()" style="background:black; border:black;">
@@ -88,8 +90,16 @@
 </div>
 
 <script>
+	function updateQuantity(cartItemId, link) {
+	    const quantityInput = link.closest('tr').querySelector('input[type="text"]');
+	    const quantity = quantityInput.value;
+	    window.location.href = '${pageContext.request.contextPath}/update?id=' + cartItemId + '&quantity=' + quantity;
+	}
+	function deleteCart() {
+        window.location.href = '${pageContext.request.contextPath}/remove'; // Chuyển hướng đến trang deletecart
+    }
     function continueShopping() {
-        window.location.href = '${pageContext.request.contextPath}/#'; // Chuyển hướng đến trang product
+        window.location.href = '${pageContext.request.contextPath}/home'; // Chuyển hướng đến trang product
     }
     function checkout() {
         window.location.href = '${pageContext.request.contextPath}/checkout'; // Chuyển hướng đến trang thanh toán

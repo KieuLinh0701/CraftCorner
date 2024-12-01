@@ -18,11 +18,13 @@ public class Constant {
 	public static final String FORGOT_PASSWORD = "/views/forgotPassword.jsp";
 	public static final String CREATE_PASSWORD = "/views/createPassword.jsp";
 	public static final String CART = "/views/cart.jsp";
+	public static final String ADMIN_CART = "/views/admin/cart.jsp";
 	public static final String CHECKOUT = "/views/checkout.jsp";
+	public static final String ADMIN_CHECKOUT = "/views/admin/checkout.jsp";
 	public static final String ACCOUNT = "/views/myAccount.jsp";
 	public static final String ADMIN_ACCOUNT = "/views/admin/myAccount.jsp";
 	public static final String ORDER_SUCCESS = "/views/orderSuccess.jsp";
-	
+	public static final String ADMIN_ORDER_SUCCESS = "/views/admin/orderSuccess.jsp";
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";
 

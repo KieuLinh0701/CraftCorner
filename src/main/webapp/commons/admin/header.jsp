@@ -50,13 +50,21 @@
 
 		<!-- BEGIN CART -->
 		<div class="top-cart-block">
-			<div class="top-cart-info">
-				<a href="${pageContext.request.contextPath}/cart"
-					class="top-cart-info-count">0 items</a>
-			</div>
-			<i class="fa fa-shopping-cart" style="background-color: black"></i>
+		    <div class="top-cart-info">
+		        <c:choose>
+		            <c:when test="${sessionScope.cartItemCount != null && sessionScope.cartItemCount > 0}">
+		                <a href="${pageContext.request.contextPath}/admin/cart"
+		                   class="top-cart-info-count">${sessionScope.cartItemCount} items</a>
+		            </c:when>
+		            <c:otherwise>
+		                <a href="${pageContext.request.contextPath}/admin/cart"
+		                   class="top-cart-info-count">0 items</a>
+		            </c:otherwise>
+		        </c:choose>
+		    </div>
+		    <i class="fa fa-shopping-cart" style="background-color: black"></i>
 		</div>
-		<!--END CART -->
+		<!-- END CART -->
 
 		<!-- BEGIN NAVIGATION -->
 		<div class="header-navigation">
