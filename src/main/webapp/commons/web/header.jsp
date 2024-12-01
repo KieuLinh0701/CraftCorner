@@ -17,6 +17,7 @@
 								| <a href="${pageContext.request.contextPath}/register">Register</a>
 						</c:when>
 						<c:otherwise>
+						<a href="${pageContext.request.contextPath}/appointment">Đặt lịch hẹn</a> |
 							<a href="${pageContext.request.contextPath}/myaccount">${sessionScope.account.fullname}</a>
 								| <a href="${pageContext.request.contextPath}/logout">Logout</a>
 						</c:otherwise>

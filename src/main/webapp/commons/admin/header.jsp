@@ -66,7 +66,7 @@
 						Product</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Product Management</a></li>
-						<li><a href="#">Category Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/categories">Category Management</a></li>
 						<li><a href="#">Inventory Management</a></li>
 					</ul></li>
 
@@ -102,9 +102,8 @@
 
 				<li class="admin-theme"><a href="${URL}admin/promote"> Promotion</a></li>
 
-				<li class="admin-theme"><a
-					href="${URL}admin/appointment-calenda"> Appointment</a></li>
-
+				<li class="admin-theme"><a href="${URL}admin/appointment-calendar"> Appointment </a></li>
+					
 				<li class="admin-theme"><a href="javascript:void(0)"
 					onclick="showCustomerTheme()"> Customer theme </a></li>
 

@@ -10,13 +10,18 @@
 		<class>vn.iotstar.entity.User</class>
 		<properties>
 			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:sqlserver://LAPTOP-D9J937E4:1433;databaseName=CraftCornerDB" />
+				value="jdbc:sqlserver://LAPTOP-6EMR4237:1433;databaseName=CozyCorner" />
 			<property name="jakarta.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="jakarta.persistence.jdbc.user" value="sa" />
+<<<<<<< refs/remotes/origin/Huyen
 			<property name="jakarta.persistence.jdbc.password"
 <<<<<<< HEAD
 				value="0123456789" />
+=======
+			<property name="jakarta.persistence.jdbc.password" value="12345" />
+			
+>>>>>>> local
 <!-- 			<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=CozyCorner" />  -->
 <!--  			<property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />  -->
 <!--  			<property name="jakarta.persistence.jdbc.user" value="sa" />  -->
