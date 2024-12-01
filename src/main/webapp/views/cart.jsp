@@ -22,6 +22,7 @@
 									<c:forEach var="cartItem" items="${listCartItem}">
 										<tr>
 											<th class="goods-page-image">Image</th>
+											<th class="goods-page-name">Name</th>
 											<th class="goods-page-description">Description</th>
 											<th class="goods-page-quantity">Quantity</th>
 											<th class="goods-page-price">Unit price</th>
@@ -37,6 +38,7 @@
 														<c:url value="${cartItem.product.image}" var="imgUrl"></c:url>
 													</c:if> <img src="${imgUrl}" alt="${cartItem.product.name}">
 											</a></td>
+											<td>${cartItem.product.name}</td>
 											<td class="goods-page-description">
 												<p>Material: ${cartItem.product.material}</p>
 												<p>Color: ${cartItem.product.color}</p>

@@ -14,7 +14,7 @@
 					<div class="details">
 						<h1>${inform }</h1>
 						<c:if test="${description ne null}">
-							<p>${description}</p>
+							<pre>${description}</pre>
 						</c:if>
 					</div>
 				</div>

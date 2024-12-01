@@ -8,51 +8,34 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IDesignDao;
+import vn.iotstar.dao.IProductDao;
 import vn.iotstar.entity.Designs;
+import vn.iotstar.entity.Product;
 import vn.iotstar.entity.User;
 
-public class DesignDao implements IDesignDao {
+public class ProductDao implements IProductDao {
 
 	@Override
-	public List<Designs> findAll() {
+	public List<Product> findAll() {
 		EntityManager enma = JPAConfig.getEntityManager();
-		TypedQuery<Designs> query = enma.createNamedQuery("Designs.findAll", Designs.class);
+		TypedQuery<Product> query = enma.createNamedQuery("Product.findAll", Product.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public Designs findById(int id) {
+	public Product findById(int id) {
 		EntityManager enma = JPAConfig.getEntityManager();
-		Designs design = enma.find(Designs.class, id);
-		return design;
+		Product product = enma.find(Product.class, id);
+		return product;
 	}
 
 	@Override
-	public Designs insert(Designs design) {
+	public void insert(Product product) {
 		EntityManager enma = JPAConfig.getEntityManager();
 		EntityTransaction trans = enma.getTransaction();
 		try {
 			trans.begin();
-			enma.persist(design);
-			enma.refresh(design);
-			trans.commit();
-			return design;
-		} catch (Exception e) {
-			e.printStackTrace();
-			trans.rollback();
-			throw e;
-		} finally {
-			enma.close();
-		}
-	}
-
-	@Override
-	public void update(Designs design) {
-		EntityManager enma = JPAConfig.getEntityManager();
-		EntityTransaction trans = enma.getTransaction();
-		try {
-			trans.begin();
-			enma.merge(design);
+			enma.persist(product);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,18 +47,35 @@ public class DesignDao implements IDesignDao {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void update(Product product) {
 		EntityManager enma = JPAConfig.getEntityManager();
 		EntityTransaction trans = enma.getTransaction();
 		try {
 			trans.begin();
-			Designs design = enma.find(Designs.class, id);
-			if (design != null) {
-				enma.remove(design);
+			enma.merge(product);
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			throw e;
+		} finally {
+			enma.close();
+		}
+	}
+
+	@Override
+	public void delete(int id){
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			Product product = enma.find(Product.class, id);
+			if (product != null) {
+				enma.remove(product);
 			} else {
 				throw new Exception("Không tìm thấy");
 			}
-			enma.remove(design);
+			enma.remove(product);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,49 +86,57 @@ public class DesignDao implements IDesignDao {
 	}
 
 	@Override
-	public List<Designs> findByTitle(String keyword) {
+	public List<Product> findByName(String keyword) {
 		EntityManager enma = JPAConfig.getEntityManager();
-		String jpql = "SELECT c FROM Designs c WHERE c.title like :title";
-		TypedQuery<Designs> query = enma.createQuery(jpql, Designs.class);
-		query.setParameter("title", "%" + keyword + "%");
+		String jpql = "SELECT c FROM Product c WHERE c.name like :name";
+		TypedQuery<Product> query = enma.createQuery(jpql, Product.class);
+		query.setParameter("name", "%" + keyword + "%");
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Designs> findAll(int page, int pagesize) {
+	public List<Product> findProductActive() {
 		EntityManager enma = JPAConfig.getEntityManager();
-		TypedQuery<Designs> query = enma.createNamedQuery("Designs.findAll", Designs.class);
+		String jpql = "SELECT c FROM Product c WHERE c.status = 1";
+		TypedQuery<Product> query = enma.createQuery(jpql, Product.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Product> findAll(int page, int pagesize) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Product> query = enma.createNamedQuery("Product.findAll", Product.class);
 		query.setFirstResult((page-1) * pagesize);
 		query.setMaxResults(pagesize);
 		return query.getResultList();
 	}
 
 	@Override
-	public int countDesign(int pageSize) {
+	public int countProduct(int pageSize) {
 		EntityManager enma = JPAConfig.getEntityManager();
-	    String countQuery = "SELECT COUNT(u) FROM Designs u";
+	    String countQuery = "SELECT COUNT(u) FROM Product u";
 	    Long count = (Long) enma.createQuery(countQuery).getSingleResult();
 	    int totalPages = (int) Math.ceil(count.doubleValue() / (double) pageSize);
 	    return totalPages;
 	}
 
 	@Override
-	public int countDesign(int pageSize, String keyword) {
+	public int countProduct(int pageSize, String keyword) {
 		EntityManager enma = JPAConfig.getEntityManager();
-	    String countQuery = "SELECT COUNT(u) FROM Designs u WHERE u.title like :title";
+	    String countQuery = "SELECT COUNT(u) FROM Product u WHERE u.name like :name";
 	    Query query = enma.createQuery(countQuery);
-	    query.setParameter("title", "%" + keyword + "%");
+	    query.setParameter("name", "%" + keyword + "%");
 	    Long count = (Long) query.getSingleResult();
 	    int totalPages = (int) Math.ceil(count.doubleValue() / (double) pageSize);
 	    return totalPages;
 	}
 
 	@Override
-	public List<Designs> findByTitle(int page, int pagesize, String keyword) {
+	public List<Product> findByName(int page, int pagesize, String keyword) {
 		EntityManager enma = JPAConfig.getEntityManager();
-	    String queryStr = "SELECT u FROM Designs u WHERE u.title LIKE :title";
-	    TypedQuery<Designs> query = enma.createQuery(queryStr, Designs.class);
-	    query.setParameter("title", "%" + keyword + "%");
+	    String queryStr = "SELECT u FROM Product u WHERE u.name like :name";
+	    TypedQuery<Product> query = enma.createQuery(queryStr, Product.class);
+	    query.setParameter("name", "%" + keyword + "%");
 	    query.setFirstResult((page - 1) * pagesize);
 	    query.setMaxResults(pagesize);   
 	    return query.getResultList();

@@ -22,18 +22,43 @@ public class DesignService implements IDesignService {
 	}
 
 	@Override
-	public void insert(Designs design) {
-		insert(design);
+	public Designs insert(Designs design) {
+		return designDao.insert(design);
 	}
 
 	@Override
 	public void update(Designs design) {
-		update(design);
+		designDao.update(design);
 	}
 
 	@Override
 	public void delete(int id) {
-		delete(id);
+		designDao.delete(id);
+	}
+
+	@Override
+	public List<Designs> findByTitle(String keyword) {
+		return designDao.findByTitle(keyword);
+	}
+
+	@Override
+	public List<Designs> findAll(int page, int pagesize) {
+		return designDao.findAll(page, pagesize);
+	}
+
+	@Override
+	public int countDesign(int pageSize) {
+		return designDao.countDesign(pageSize);
+	}
+
+	@Override
+	public int countDesign(int pageSize, String keyword) {
+		return designDao.countDesign(pageSize, keyword);
+	}
+
+	@Override
+	public List<Designs> findByTitle(int page, int pagesize, String keyword) {
+		return designDao.findByTitle(page, pagesize, keyword);
 	}
 
 }

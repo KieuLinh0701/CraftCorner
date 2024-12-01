@@ -17,6 +17,7 @@ import vn.iotstar.entity.CartItem;
 import vn.iotstar.entity.Order;
 import vn.iotstar.entity.OrderDetail;
 import vn.iotstar.entity.PaymentMethod;
+import vn.iotstar.entity.Product;
 import vn.iotstar.entity.Promote;
 import vn.iotstar.entity.User;
 import vn.iotstar.services.IAddressService;
@@ -25,6 +26,7 @@ import vn.iotstar.services.ICartService;
 import vn.iotstar.services.IOrderDetailService;
 import vn.iotstar.services.IOrderService;
 import vn.iotstar.services.IPaymentService;
+import vn.iotstar.services.IProductService;
 import vn.iotstar.services.IPromoteService;
 import vn.iotstar.services.IUserService;
 import vn.iotstar.services.implement.AddressService;
@@ -33,6 +35,7 @@ import vn.iotstar.services.implement.CartService;
 import vn.iotstar.services.implement.OrderDetailService;
 import vn.iotstar.services.implement.OrderService;
 import vn.iotstar.services.implement.PaymentService;
+import vn.iotstar.services.implement.ProductService;
 import vn.iotstar.services.implement.PromoteService;
 import vn.iotstar.services.implement.UserService;
 import vn.iotstar.utils.Constant;
@@ -142,6 +145,12 @@ public class CheckoutController extends HttpServlet {
 			IOrderDetailService detailService = new OrderDetailService();
 			for (CartItem x:setCartItem) {
 				OrderDetail orderDetail = new OrderDetail();
+				
+				IProductService productService = new ProductService();
+				Product product = x.getProduct();
+				product.setQuantity(product.getQuantity()-1);
+				productService.update(product);
+				
 				orderDetail.setProduct(x.getProduct());
 				orderDetail.setQuantity(x.getQuantity());
 				orderDetail.setOrder(newOrder);
@@ -161,7 +170,10 @@ public class CheckoutController extends HttpServlet {
 			}
 			else {
 				req.setAttribute("inform", "Thanks for your order! Please make a bank transfer using the account details below");
-				//req.setAttribute("description", payment.getDescription());
+				req.setAttribute("description",
+								"Bank Name: " + payment.getBankName() + "\n" +
+							    "Account Number: " + payment.getAccountNumber() + "\n" +
+							    "Account Owner: " + payment.getAccountOwner());
 				req.getRequestDispatcher(Constant.ORDER_SUCCESS).forward(req, resp);
 			}
 		}

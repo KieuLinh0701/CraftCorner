@@ -9,7 +9,15 @@
 		<div class="row margin-bottom-40">
 			<!-- BEGIN CONTENT -->
 			<div class="col-md-12 col-sm-12">
-				<h1>${design.title}</h1>
+				<div class="col-md-6 col-sm-6">
+						<h1>${design.title}</h1>
+					</div>
+				<div class="col-md-6 col-sm-6">
+						<a href="${pageContext.request.contextPath}/admin/design/delete?id=${design.designId }" class="btn btn-primary"
+							style="background: black; float: right;"> Delete <i class="fa fa-trash"></i> </a>
+						<a href="${pageContext.request.contextPath}/admin/design/edit?id=${design.designId }" class="btn btn-primary"
+							style="background: black; float: right; margin-right: 10px;"> Modify <i class="fa fa-gear"></i> </a>
+					</div>
 				<div class="content-page">
 					<div class="row">
 						<div class="col-md-8 col-sm-8 blog-item">
