@@ -12,7 +12,7 @@
 		<div class="ls-slide ls-slide1"
 			data-ls="offsetxin: right; slidedelay: 7000; transition2d: 24,25,27,28;">
 
-			<img src="${URL}assets/frontend/pages/img/layerslider/slide1/bg_slide1.jpg"
+			<img src="${URL}../assets/frontend/pages/img/layerslider/slide1/bg_slide1.jpg"
 				class="ls-bg" alt="Slide background">
 
 			<div class="ls-l ls-title"
@@ -51,7 +51,7 @@
 		<div class="ls-slide ls-slide2"
 			data-ls="offsetxin: right; slidedelay: 7000; transition2d: 110,111,112,113;">
 
-			<img src="${URL}assets/frontend/pages/img/layerslider/slide2/bg_slide2.jpg"
+			<img src="${URL}../assets/frontend/pages/img/layerslider/slide2/bg_slide2.jpg"
 				class="ls-bg" alt="Slide background">
 
 			<div class="ls-l ls-title"
@@ -111,7 +111,7 @@
 		<div class="ls-slide ls-slide3"
 			data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">
 
-			<img src="${URL}assets/frontend/pages/img/layerslider/slide3/bg_slide3.jpg"
+			<img src="${URL}../assets/frontend/pages/img/layerslider/slide3/bg_slide3.jpg"
 				class="ls-bg" alt="Slide background">
 			
 			
@@ -164,7 +164,7 @@
 		<div class="ls-slide ls-slide4"
 			data-ls="offsetxin: right; slidedelay: 7000; transition2d: 110,111,112,113;">
 
-			<img src="${URL}assets/frontend/pages/img/layerslider/slide4/bg_slide4.jpg"
+			<img src="${URL}../assets/frontend/pages/img/layerslider/slide4/bg_slide4.jpg"
 				class="ls-bg" alt="Slide background">
 
 			<div class="ls-l ls-title"

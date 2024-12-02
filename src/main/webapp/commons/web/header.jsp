@@ -57,6 +57,7 @@
 		<!-- BEGIN NAVIGATION -->
 		<div class="header-navigation">
 			<ul>
+				<li><a href="${pageContext.request.contextPath}/home"> Home </a></li>
 				<li><a href="#"> Shop </a></li>
 				<li><a href="#"> Blogs </a></li>
 				<li><a href="#"> Design Samples </a></li>

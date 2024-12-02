@@ -57,6 +57,7 @@
 		<!-- BEGIN NAVIGATION -->
 		<div class="header-navigation">
 			<ul>
+				<li><a href="${pageContext.request.contextPath}/admin/home"> Home </a></li>
 				<li class="admin-theme dropdown active"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
 						Product</a>
