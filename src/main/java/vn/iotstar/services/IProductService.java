@@ -28,4 +28,7 @@ List<Product> findAll();
 	int countProduct(int pageSize, String keyword);
 	
 	List<Product> findByName(int page, int pagesize, String keyword);
+	
+	int productCount(int category_id);
+
 }

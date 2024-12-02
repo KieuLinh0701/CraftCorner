@@ -31,4 +31,22 @@ public class PromoteService implements IPromoteService{
 		promoteDao.update(promote);
 	}
 
+	@Override
+	public void insert(Promote promote) {
+        promoteDao.insert(promote);
+		
+	}
+
+	@Override
+	public void delete(Promote promote) {
+        promoteDao.delete(promote);
+		
+	}
+
+	@Override
+	public List<Promote> findByPercent(int percent) {
+		return promoteDao.findByPercent(percent);
+	}
+
+
 }

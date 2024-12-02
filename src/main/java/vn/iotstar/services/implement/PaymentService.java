@@ -25,4 +25,19 @@ public class PaymentService implements IPaymentService{
 	public List<PaymentMethod> findPaymentActive() {
 		return paymentDao.findPaymentActive();
 	}
+
+	@Override
+	public void insert(PaymentMethod paymentMethod) {
+		paymentDao.insert(paymentMethod);
+	}
+
+	@Override
+	public void update(PaymentMethod paymentMethod) {
+		paymentDao.update(paymentMethod);
+	}
+
+	@Override
+	public void delete(PaymentMethod paymentMethod) {
+		paymentDao.delete(paymentMethod);
+	}
 }
