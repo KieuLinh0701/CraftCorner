@@ -100,11 +100,11 @@
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
 						Account</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Customer Management</a></li>
-						<li><a href="#">Employee Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/users">Customer Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/adminsmanage">Admin Management</a></li>
 					</ul></li>
 
-				<li><a href="#"> Order</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/orders"> Order</a></li>
 
 
 				<li><a href="${URL}admin/promote"> Promotion</a></li>
