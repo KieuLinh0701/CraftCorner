@@ -141,4 +141,22 @@ public class ProductDao implements IProductDao {
 	    query.setMaxResults(pagesize);   
 	    return query.getResultList();
 	}
+
+	@Override
+	public int productCount(int category_id) {
+		EntityManager em = JPAConfig.getEntityManager();
+		try {
+			String jpql = "SELECT COUNT(p) FROM Product p WHERE p.category.category_id = :category_id";
+			TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+			query.setParameter("category_id", category_id);
+
+			Long count = query.getSingleResult();
+			return count.intValue();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e; 
+		} finally {
+			em.close(); 
+		}
+	}
 }

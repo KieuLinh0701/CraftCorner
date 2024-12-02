@@ -70,4 +70,9 @@ public class ProductService implements IProductService {
 		return productDao.findByName(page, pagesize, keyword);
 	}
 
+	@Override
+	public int productCount(int category_id) {
+		return productDao.productCount(category_id);
+	}
+
 }

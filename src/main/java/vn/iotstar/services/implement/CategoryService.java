@@ -24,4 +24,20 @@ public class CategoryService implements ICategoryService{
 	public Category findById(int id) {
 		return categoryDao.findById(id);
 	}
+	
+	@Override
+	public void insert(Category cate) {
+		categoryDao.insert(cate);
+		
+	}
+	@Override
+	public void delete(int category_id) {
+		categoryDao.delete(category_id);
+		
+	}
+	@Override
+	public void update(Category cate) {
+		categoryDao.update(cate);
+		
+	}
 }

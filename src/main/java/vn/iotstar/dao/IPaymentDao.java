@@ -11,4 +11,10 @@ public interface IPaymentDao {
 	List<PaymentMethod> findPaymentActive();
 	
 	PaymentMethod findById(int payment_id);
+	
+	void insert(PaymentMethod paymentMethod);
+
+    void update(PaymentMethod paymentMethod);
+
+    void delete(PaymentMethod paymentMethod);
 }
