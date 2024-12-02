@@ -64,7 +64,7 @@
 						Home </a></li>
 
 				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">Product</a>
+					class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Product</a>
 					<ul class="dropdown-menu">
 						<li><a
 							href="${pageContext.request.contextPath}/admin/products">Product
@@ -77,7 +77,7 @@
 
 
 				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">
+					class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 						Finance</a>
 					<ul class="dropdown-menu">
 						<li><a href="${URL}admin/payment-method"> Payment Method
@@ -87,7 +87,7 @@
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">
+					class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 						Content</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Blog Management</a></li>
@@ -97,7 +97,7 @@
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">
+					class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
 						Account</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/admin/users">Customer Management</a></li>
