@@ -32,6 +32,7 @@ public class Constant {
 
 	public static final String ADMIN_HOME = "/views/admin/home.jsp";
 	public static final String DESIGN_DETAIL_MANAGEMENT = "/views/admin/design-detail.jsp";
+	public static final String PRODUCT_DETAIL_MANAGEMENT = "/views/admin/product-detail.jsp";
 	public static final String DESIGN_ADD_STEP1 = "/views/admin/design-add-step1.jsp";
 	public static final String DESIGN_ADD_STEP2 = "/views/admin/design-add-step2.jsp";
 	public static final String DESIGN_EDIT_STEP1 = "/views/admin/design-edit-step1.jsp";

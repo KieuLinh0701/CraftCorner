@@ -45,7 +45,6 @@ public class CartController extends HttpServlet {
 				} 
 				else 
 				{
-					
 					Set<CartItem> listCartItem = cart.getCartItems();
 					if (listCartItem.size() == 0) 
 					{

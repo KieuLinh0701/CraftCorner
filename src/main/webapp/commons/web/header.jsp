@@ -59,14 +59,9 @@
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/home"> Home </a></li>
 				<li><a href="#"> Shop </a></li>
-<<<<<<< HEAD
-				<li><a href="#"> Blogs </a></li>
-				<li><a href="#"> Design Samples </a></li>
-				<li><a href="${pageContext.request.contextPath}/appointment">Appointments</a></li>
-=======
 				<li><a href="${pageContext.request.contextPath}/blog"> Blogs </a></li>
-				<li><a href="${pageContext.request.contextPath}/designs"> Design ideas </a></li>
->>>>>>> origin/Huy
+				<li><a href="${pageContext.request.contextPath}/designs"> Design Samples </a></li>
+				<li><a href="${pageContext.request.contextPath}/appointment">Appointments</a></li>
 			</ul>
 		</div>
 		<!-- END NAVIGATION -->

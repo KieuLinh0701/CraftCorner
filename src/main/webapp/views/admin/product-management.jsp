@@ -41,7 +41,8 @@
 						<!-- BEGIN LEFT SIDEBAR -->
 						<div class="col-md-12 col-sm-12 blog-posts">
 							<div class="row">
-								<table style="border-collapse: collapse; width: calc(100% - 20px);  margin-left: 10px; margin-right: 10px;">
+								<table
+									style="border-collapse: collapse; width: calc(100% - 20px); margin-left: 10px; margin-right: 10px;">
 									<tr style="height: 30px; border-bottom: 1px solid black;">
 										<th style="width: 170px;">Image</th>
 										<th style="width: auto;">Name</th>
@@ -64,7 +65,8 @@
 													<img class="img-responsive" alt="${product.name}"
 														height="90" width="120" src="${imgUrl}">
 												</div></td>
-											<td>${product.name}</td>
+											<td><a
+												href="${pageContext.request.contextPath}/admin/product/productdetail?id=${product.product_id}">${product.name}</a></td>
 											<td>${product.category.name}</td>
 											<td>${product.price}</td>
 											<td>${product.quantity}</td>

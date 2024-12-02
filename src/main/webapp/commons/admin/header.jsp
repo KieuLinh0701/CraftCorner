@@ -83,7 +83,6 @@
 						<li><a href="${URL}admin/payment-method"> Payment Method
 						</a></li>
 						<li><a href="#">Revenue Management</a></li>
-						<li><a href="#">Transaction History</a></li>
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a

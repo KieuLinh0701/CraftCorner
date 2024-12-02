@@ -8,12 +8,14 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 import vn.iotstar.entity.Category;
 import vn.iotstar.entity.Designs;
@@ -26,7 +28,7 @@ import vn.iotstar.utils.Constant;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 @WebServlet(urlPatterns = { "/admin/products", "/admin/products/search", "/admin/product/add", "/admin/product/insert",
-		"/admin/product/edit", "/admin/product/update", "/admin/product/delete"})
+		"/admin/product/edit", "/admin/product/update", "/admin/product/delete", "/admin/product/productdetail" })
 public class ProductController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -94,14 +96,18 @@ public class ProductController extends HttpServlet {
 			req.getRequestDispatcher(Constant.PRODUCT_EDIT).forward(req, resp);
 		} else if (url.contains("delete")) {
 			int id = Integer.parseInt(req.getParameter("id"));
-			try {
-				productService.delete(id);
-			}
-			catch (Exception e){
-				e.printStackTrace();
-			}
-			resp.sendRedirect(req.getContextPath() + "/admin/products");
-		} 
+		    try {
+		        productService.delete(id);
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+		    resp.sendRedirect(req.getContextPath() + "/admin/products");
+		} else if (url.contains("productdetail")) {
+			int id = Integer.parseInt(req.getParameter("id"));
+			Product product = productService.findById(id);
+			req.setAttribute("product", product);
+			req.getRequestDispatcher(Constant.PRODUCT_DETAIL_MANAGEMENT).forward(req, resp);
+		}
 	}
 
 	@Override
@@ -152,10 +158,10 @@ public class ProductController extends HttpServlet {
 
 			Float height = Float.parseFloat(req.getParameter("height"));
 			product.setHeight(height);
-			
+
 			Float length = Float.parseFloat(req.getParameter("length"));
 			product.setLength(length);
-			
+
 			Float width = Float.parseFloat(req.getParameter("width"));
 			product.setWidth(width);
 
@@ -202,7 +208,7 @@ public class ProductController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/admin/products");
 		} else if (url.contains("update")) {
 			Product product = new Product();
-			
+
 			int product_id = Integer.parseInt(req.getParameter("product_id"));
 			product.setProduct_id(product_id);
 
