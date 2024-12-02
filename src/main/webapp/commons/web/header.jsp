@@ -32,8 +32,8 @@
 <div class="header">
 	<div class="container">
 		<a class="site-logo" href="${pageContext.request.contextPath}/home"><img
-			src="${URL}assets/img/logo/logo2.png" alt="Carft Corner"></a>
-		<a href="javascript:void(0);" class="mobi-toggler"><i
+			src="${URL}assets/img/logo/logo2.png" alt="Carft Corner"></a> <a
+			href="javascript:void(0);" class="mobi-toggler"><i
 			class="fa fa-bars"></i></a>
 
 		<!-- BEGIN CART -->
@@ -52,9 +52,12 @@
 				<li><a href="#"> Shop </a></li>
 				<li><a href="#"> Blogs </a></li>
 				<li><a href="#"> Design ideas </a></li>
+				<!-- Thêm mục Order -->
+				<li><a href="${pageContext.request.contextPath}/orders">Order</a></li>
 			</ul>
 		</div>
 		<!-- END NAVIGATION -->
+
 	</div>
 </div>
 <!-- Header END -->
