@@ -29,7 +29,8 @@ if (alertMessage != null) {
 							class="require">*</span></label>
 						<div class="col-lg-8">
 							<input type="text" class="form-control" id="email" name="email"
-								require> <span id="emailError" class="error-message"
+								value="${email }" require> <span id="emailError"
+								class="error-message"
 								style="color: #E02222; font-size: 12px; font-style: italic;"></span>
 						</div>
 					</div>
@@ -80,6 +81,7 @@ if (alertMessage != null) {
 <!-- END CONTENT -->
 
 <script>
+
 	const passwordInput = document.getElementById('password');
 	const togglePassword = document.getElementById('togglePassword');
 

@@ -64,8 +64,8 @@ public class LoginController extends HttpServlet {
 			resp.sendRedirect(req.getContextPath() + "/waiting");
 		} else {
 			alertMsg = "Please check your username and password and try again";
-			req.setAttribute("alert", alertMsg);
 			req.setAttribute("email", email);
+			req.setAttribute("alert", alertMsg);
 			req.getRequestDispatcher(Constant.LOGIN).forward(req, resp);
 		}
 	}

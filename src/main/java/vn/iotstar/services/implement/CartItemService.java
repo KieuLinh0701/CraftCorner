@@ -22,5 +22,20 @@ public class CartItemService implements ICartItemService{
 		return cartItemDao.totalPrice(listCartItem);
 	}
 
+	@Override
+	public void delete(int id) throws Exception {
+		cartItemDao.delete(id);
+	}
+
+	@Override
+	public CartItem findById(int id) {
+		return cartItemDao.findById(id);
+	}
+
+	@Override
+	public void update(CartItem cartItem) {
+		cartItemDao.update(cartItem);
+	}
+
 
 }

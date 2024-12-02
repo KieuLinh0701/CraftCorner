@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IPaymentDao;
@@ -36,5 +37,57 @@ public class PaymentDao implements IPaymentDao {
 			}
 		}
 		return listPayment;
+	}
+
+	@Override
+	public void insert(PaymentMethod paymentMethod) {
+		 EntityManager enma = JPAConfig.getEntityManager();
+	        EntityTransaction trans = enma.getTransaction();
+	        try {
+	            trans.begin();
+	            enma.persist(paymentMethod);
+	            trans.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            trans.rollback();
+	            throw e;
+	        } finally {
+	            enma.close();
+	        }
+	}
+
+	@Override
+	public void update(PaymentMethod paymentMethod) {
+		EntityManager enma = JPAConfig.getEntityManager();
+        EntityTransaction trans = enma.getTransaction();
+        try {
+            trans.begin();
+            enma.merge(paymentMethod);
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            trans.rollback();
+            throw e;
+        } finally {
+            enma.close();
+        }		
+	}
+
+	@Override
+	public void delete(PaymentMethod paymentMethod) {
+		 EntityManager enma = JPAConfig.getEntityManager();
+	        EntityTransaction trans = enma.getTransaction();
+	        try {
+	            trans.begin();
+	            paymentMethod = enma.merge(paymentMethod);
+	            enma.remove(paymentMethod);
+	            trans.commit();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            trans.rollback();
+	            throw e;
+	        } finally {
+	            enma.close();
+	        }		
 	}
 }

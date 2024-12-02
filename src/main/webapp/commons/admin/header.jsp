@@ -4,18 +4,6 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
-<head>
-<style>
-.admin-theme {
-	display: none;
-}
-
-.customer-theme {
-	display: block;
-}
-</style>
-</head>
-
 <!-- DangNhap, DangKy -->
 <!-- BEGIN TOP BAR -->
 <div class="pre-header">
@@ -50,13 +38,21 @@
 
 		<!-- BEGIN CART -->
 		<div class="top-cart-block">
-			<div class="top-cart-info">
-				<a href="${pageContext.request.contextPath}/cart"
-					class="top-cart-info-count">0 items</a>
-			</div>
-			<i class="fa fa-shopping-cart" style="background-color: black"></i>
+		    <div class="top-cart-info">
+		        <c:choose>
+		            <c:when test="${sessionScope.cartItemCount != null && sessionScope.cartItemCount > 0}">
+		                <a href="${pageContext.request.contextPath}/admin/cart"
+		                   class="top-cart-info-count">${sessionScope.cartItemCount} items</a>
+		            </c:when>
+		            <c:otherwise>
+		                <a href="${pageContext.request.contextPath}/admin/cart"
+		                   class="top-cart-info-count">0 items</a>
+		            </c:otherwise>
+		        </c:choose>
+		    </div>
+		    <i class="fa fa-shopping-cart" style="background-color: black"></i>
 		</div>
-		<!--END CART -->
+		<!-- END CART -->
 
 		<!-- BEGIN NAVIGATION -->
 		<div class="header-navigation">
@@ -65,8 +61,8 @@
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
 						Product</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Product Management</a></li>
-						<li><a href="#">Category Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/products">Product Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/categories">Category Management</a></li>
 						<li><a href="#">Inventory Management</a></li>
 					</ul></li>
 
@@ -96,58 +92,16 @@
 						<li><a href="#">Employee Management</a></li>
 					</ul></li>
 					
-				<li class="admin-theme"><a href="#"
-					onclick="showCustomerTheme()"> Order</a></li>
+				<li><a href="#"> Order</a></li>
 
 
-				<li class="admin-theme"><a href="${URL}admin/promote"> Promotion</a></li>
+				<li><a href="${URL}admin/promote"> Promotion</a></li>
 
-				<li class="admin-theme"><a
-					href="${URL}admin/appointment-calenda"> Appointment</a></li>
-
-				<li class="admin-theme"><a href="javascript:void(0)"
-					onclick="showCustomerTheme()"> Customer theme </a></li>
-
-				<li class="customer-theme"><a
-					href="${pageContext.request.contextPath}/admin/home"> Home </a></li>
-				<li class="customer-theme"><a href="#"> Shop </a></li>
-				<li class="customer-theme"><a href="#"> Blogs </a></li>
-				<li class="customer-theme"><a href="#"> Design ideas </a></li>
-				<li class="customer-theme"><a href="javascript:void(0)"
-					onclick="showAdminTheme()"> Admin Theme </a></li>
+				<li><a
+					href="${URL}admin/appointment-calendar"> Appointment</a></li>
 			</ul>
 		</div>
 	</div>
 	<!-- END NAVIGATION -->
 </div>
 <!-- Header END -->
-
-<script>
-function showAdminTheme() {
-    // Ẩn tất cả các mục của customer-theme
-    const customerItems = document.querySelectorAll('.customer-theme');
-    customerItems.forEach(item => {
-        item.style.display = 'none';
-    });
-
-    // Hiện tất cả các mục của admin-theme
-    const adminItems = document.querySelectorAll('.admin-theme');
-    adminItems.forEach(item => {
-        item.style.display = 'block';
-    });
-}
-
-function showCustomerTheme() {
-    // Ẩn tất cả các mục của admin-theme
-    const adminItems = document.querySelectorAll('.admin-theme');
-    adminItems.forEach(item => {
-        item.style.display = 'none';
-    });
-
-    // Hiện tất cả các mục của customer-theme
-    const customerItems = document.querySelectorAll('.customer-theme');
-    customerItems.forEach(item => {
-        item.style.display = 'block';
-    });
-}
-</script>

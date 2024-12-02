@@ -58,10 +58,13 @@ public class EmailController extends HttpServlet{
 				req.getRequestDispatcher(Constant.VERIFY_CODE_ACCOUNT).forward(req, resp);
 			}
 		} else if (url.contains("verifycodepassword")) {
+			String alertMsg = "";
 			if (userService.checkCode(email, code)) {
 				resp.sendRedirect(req.getContextPath() + "/createpassword");
 			} else {
-				
+				alertMsg = "Invalid verification code. Please re-enter!";
+				req.setAttribute("alert", alertMsg);
+				req.getRequestDispatcher(Constant.VERIFY_CODE_PASSWORD).forward(req, resp);
 			}
 		}
 	}

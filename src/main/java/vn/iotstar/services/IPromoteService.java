@@ -12,5 +12,11 @@ public interface IPromoteService {
 	
 	Promote findById(int id);
 	
-	void update(Promote promote);
+	void insert(Promote promote);
+
+    void update(Promote promote);
+
+    void delete(Promote promote);
+    
+    List<Promote> findByPercent(int percent);
 }

@@ -10,9 +10,19 @@ public interface IDesignService {
 
 	Designs findById(int id);
 
-	void insert(Designs design);
+	Designs insert(Designs design);
 
 	void update(Designs design);
 
 	void delete(int id);
+
+	List<Designs> findByTitle(String keyword);
+
+	List<Designs> findAll(int page, int pagesize);
+
+	int countDesign(int pageSize);
+
+	int countDesign(int pageSize, String keyword);
+
+	List<Designs> findByTitle(int page, int pagesize, String keyword);
 }

@@ -165,14 +165,14 @@
             </div>
         </div>
         <hr>
-        <h3>My Orders</h3>
+       <!--  <h3>My Orders</h3>
         <ul>
             <li><a href="#">View your order history</a></li>
             <li><a href="#">Downloads</a></li>
             <li><a href="#">Your Reward Points</a></li>
             <li><a href="#">View your return requests</a></li>
             <li><a href="#">Your Transactions</a></li>
-        </ul>
+        </ul> -->
     </div>
 </div>
 <!-- END CONTENT -->

@@ -11,4 +11,9 @@ public interface ICartItemService {
 	
 	int totalPrice(Set<CartItem> listCartItem);
 
+	void delete(int id) throws Exception;
+	
+	CartItem findById(int id);
+
+	void update(CartItem cartItem);
 }

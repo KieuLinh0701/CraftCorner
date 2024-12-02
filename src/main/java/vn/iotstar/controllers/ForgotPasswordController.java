@@ -1,6 +1,7 @@
 package vn.iotstar.controllers;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,8 +9,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.iotstar.dao.implement.SendMail;
+import vn.iotstar.entity.Address;
 import vn.iotstar.entity.User;
+import vn.iotstar.services.IAddressService;
+import vn.iotstar.services.IRoleService;
 import vn.iotstar.services.IUserService;
+import vn.iotstar.services.implement.AddressService;
+import vn.iotstar.services.implement.RoleService;
 import vn.iotstar.services.implement.UserService;
 import vn.iotstar.utils.Constant;
 
@@ -50,7 +57,19 @@ public class ForgotPasswordController extends HttpServlet {
 			if (user != null) {
 				HttpSession session = req.getSession();
 				session.setAttribute("account", user);
-				resp.sendRedirect(req.getContextPath() + "/verifycodepassword");
+				
+				SendMail sm = new SendMail();
+				String code = sm.getRandom();
+				user.setCode(code);
+				service.update(user);
+				boolean test = sm.SendEmail(user);
+				
+				if (test) {
+					resp.sendRedirect(req.getContextPath() + "/verifycodepassword");
+				} else {
+					alertMsg = "There was an error while sending the email!";
+					req.getRequestDispatcher(Constant.FORGOT_PASSWORD).forward(req, resp);
+				}
 			} else {
 				alertMsg = "The email address you entered is not associated with any existing account. Please try again or create a new account!";
 				req.setAttribute("email", email);

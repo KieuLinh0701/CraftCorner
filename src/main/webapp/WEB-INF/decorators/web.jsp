@@ -5,7 +5,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <!-- Head BEGIN -->
 <head>
 <meta charset="utf-8">
@@ -87,7 +86,8 @@
 	<%@ include file="/commons/web/header.jsp"%>
 	<!-- END HEADER -->
 
-	<div class="main">
+	<div class="main"
+		style="display: flex; flex-direction: column; min-height: 100%;">
 		<div class="container">
 			<sitemesh:write property="body" />
 		</div>
