@@ -9,3 +9,10 @@
 <%@ include file="/commons/web/best-sellers.jsp"%>
 <!-- BEGIN BEST-SELLER -->
 
+<!-- BEGIN NEW-ARRIVAL -->
+<%@ include file="/commons/web/all-products.jsp"%>
+<!-- END NEW-ARRIVAL -->
+
+<!-- BEGIN CONTENT -->
+<%@ include file="/commons/web/content.jsp"%>
+<!-- END CONTENT -->
