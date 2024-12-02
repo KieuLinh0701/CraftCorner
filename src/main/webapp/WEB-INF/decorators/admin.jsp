@@ -112,6 +112,7 @@
 		type="text/javascript"></script>
 	<script src="${URL}assets/frontend/layout/scripts/back-to-top.js"
 		type="text/javascript"></script>
+	<script src="${URL}assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script
 		src="${URL}assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 		type="text/javascript"></script>
@@ -136,7 +137,7 @@
 	<script src="${URL}assets/global/plugins/uniform/jquery.uniform.min.js"
 		type="text/javascript"></script>
 
-
+	<script src="${URL}assets/global/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
 	<!-- BEGIN LayerSlider -->
 	<script
 		src="${URL}assets/global/plugins/slider-layer-slider/js/greensock.js"
@@ -154,6 +155,8 @@
 		type="text/javascript"></script>
 	<!-- END LayerSlider -->
 	
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
+	
 		<script src="${URL}assets/global/plugins/fullcalendar/fullcalendar.js"
 			type="text/javascript"></script>
 
@@ -170,6 +173,7 @@
 			Layout.initTwitter();
 			Layout.initFixHeaderWithPreHeader();
 			Layout.initNavScrolling();
+			Layout.initSliderRange();
 		});
 	</script>
 	<!-- END PAGE LEVEL JAVASCRIPTS -->

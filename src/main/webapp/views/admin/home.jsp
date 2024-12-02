@@ -4,8 +4,3 @@
 <!-- BEGIN SLIDER -->
 <%@ include file="/commons/admin/slider.jsp"%>
 <!-- END SLIDER -->
-
-<!-- BEGIN BEST-SELLER -->
-<%@ include file="/commons/admin/best-sellers.jsp"%>
-<!-- BEGIN BEST-SELLER -->
-
