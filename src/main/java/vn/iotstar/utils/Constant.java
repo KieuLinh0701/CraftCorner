@@ -36,6 +36,8 @@ public class Constant {
 	public static final String PRODUCT_MANAGEMENT = "/views/admin/product-management.jsp";
 	public static final String PRODUCT_ADD = "/views/admin/product-add.jsp";
 	public static final String PRODUCT_EDIT = "/views/admin/product-edit.jsp";
+	public static final String ORDER = "/views/orders.jsp";
+	public static final String ORDER_DETAIL = "/views/orderDetail.jsp";
 	
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";
