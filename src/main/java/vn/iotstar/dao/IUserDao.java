@@ -31,5 +31,5 @@ public interface IUserDao {
 	boolean checkPassword(String email, String password);
 	
 	List<User> findAllCustomers();
-	
+	List<User> findAllAdmin();
 }

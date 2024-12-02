@@ -5,7 +5,7 @@
     <!-- Trường hợp này trả về /forgetPW_logout -->
     <!-- Thêm category - đưa đến insert ở controller -->
 <div class="col-md-12 col-sm-12">
-	<h1>ADD CATEGORY</h1>
+	<h1>ADD </h1>
 	<div class="content-page">
 		<div class="content-page">
 				<form

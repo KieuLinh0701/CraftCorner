@@ -9,6 +9,7 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.IUserDao;
+import vn.iotstar.entity.Address;
 import vn.iotstar.entity.User;
 
 public class UserDao implements IUserDao {
@@ -93,6 +94,7 @@ public class UserDao implements IUserDao {
 		try {
 			trans.begin();
 			enma.persist(user);
+			User newuser = enma.merge(user);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -171,6 +173,18 @@ public class UserDao implements IUserDao {
         EntityManager em = JPAConfig.getEntityManager();
         try {
             String jpql = "SELECT u FROM User u WHERE u.role.id = 2";
+            Query query = em.createQuery(jpql, User.class);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+	
+	@Override
+    public List<User> findAllAdmin() {
+        EntityManager em = JPAConfig.getEntityManager();
+        try {
+            String jpql = "SELECT u FROM User u WHERE u.role.id = 1";
             Query query = em.createQuery(jpql, User.class);
             return query.getResultList();
         } finally {

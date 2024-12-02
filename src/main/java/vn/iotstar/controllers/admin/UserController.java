@@ -38,15 +38,15 @@ public class UserController extends HttpServlet{
         if (url.contains("/admin/users")) {
             List<User> users = userService.findAllCustomers();
             req.setAttribute("listUsers", users);
-            req.getRequestDispatcher("/views/userlist.jsp").forward(req, resp);
-        } else if (url.contains("/admin/user/add")) {
-            req.getRequestDispatcher("/views/useradd.jsp").forward(req, resp);
+            req.getRequestDispatcher("/views/admin/UserManagement/userlist.jsp").forward(req, resp);
         } else if (url.contains("/admin/user/edit")) {
             int id = Integer.parseInt(req.getParameter("id"));
             User user = userService.findById(id);
             req.setAttribute("user", user);
             req.getRequestDispatcher("/views/useredit.jsp").forward(req, resp);
-        } 
+        } else if (url.contains("/admin/user/add")) {
+            req.getRequestDispatcher("/views/useradd.jsp").forward(req, resp);
+        }
 //            else if (url.contains("/admin/user/delete")) {
 //            int id = Integer.parseInt(req.getParameter("id"));
 //            userService.delete(id);

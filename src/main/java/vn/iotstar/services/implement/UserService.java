@@ -85,4 +85,14 @@ public class UserService implements IUserService{
     public List<User> findAllCustomers() {
         return userDao.findAllCustomers();
     }
+	
+	@Override
+    public List<User> findAllAdmin() {
+        return userDao.findAllAdmin();
+    }
+	
+	@Override
+	public void insertAdmin(User user) {
+		userDao.insert(user);
+	}
 }

@@ -31,5 +31,6 @@ public interface IUserService {
 	boolean checkPassword(String email, String password);
 
 	List<User> findAllCustomers();
-
+	List<User> findAllAdmin();
+	void insertAdmin(User user);
 }
