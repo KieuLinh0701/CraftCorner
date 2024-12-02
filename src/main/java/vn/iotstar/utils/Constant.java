@@ -21,11 +21,13 @@ public class Constant {
 	public static final String FORGOT_PASSWORD = "/views/forgotPassword.jsp";
 	public static final String CREATE_PASSWORD = "/views/createPassword.jsp";
 	public static final String CART = "/views/cart.jsp";
+	public static final String ADMIN_CART = "/views/admin/cart.jsp";
 	public static final String CHECKOUT = "/views/checkout.jsp";
+	public static final String ADMIN_CHECKOUT = "/views/admin/checkout.jsp";
 	public static final String ACCOUNT = "/views/myAccount.jsp";
 	public static final String ADMIN_ACCOUNT = "/views/admin/myAccount.jsp";
 	public static final String ORDER_SUCCESS = "/views/orderSuccess.jsp";
-	
+
 	public static final String ADMIN_HOME = "/views/admin/home.jsp";
 	public static final String DESIGN_DETAIL_MANAGEMENT = "/views/admin/design-detail.jsp";
 	public static final String DESIGN_ADD_STEP1 = "/views/admin/design-add-step1.jsp";
@@ -37,6 +39,7 @@ public class Constant {
 	public static final String PRODUCT_ADD = "/views/admin/product-add.jsp";
 	public static final String PRODUCT_EDIT = "/views/admin/product-edit.jsp";
 	
+	public static final String ADMIN_ORDER_SUCCESS = "/views/admin/orderSuccess.jsp";
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";
 

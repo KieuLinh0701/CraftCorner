@@ -1,7 +1,9 @@
-package vn.iotstar.controllers;
+package vn.iotstar.controllers.admin;
 
 import java.io.IOException;
-import java.util.List;
+
+
+
 import java.util.Set;
 
 import jakarta.servlet.ServletException;
@@ -19,7 +21,7 @@ import vn.iotstar.services.implement.CartItemService;
 import vn.iotstar.services.implement.CartService;
 import vn.iotstar.utils.Constant;
 
-@WebServlet(urlPatterns = { "/cart","/remove","/delete", "/update"})
+@WebServlet(urlPatterns = { "/admin/cart","/admin/remove","/admin/delete", "/admin/update"})
 public class CartController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +34,7 @@ public class CartController extends HttpServlet {
 		String url = req.getRequestURI();
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		if (url.contains("cart")) {
+		if (url.contains("/admin/cart")) {
 			HttpSession session = req.getSession();
 			User user = (User) session.getAttribute("account");			
 			if (user == null) {
@@ -65,9 +67,9 @@ public class CartController extends HttpServlet {
 					}	
 				}
 			}
-			req.getRequestDispatcher(Constant.CART).forward(req, resp);
+			req.getRequestDispatcher(Constant.ADMIN_CART).forward(req, resp);
 		}
-		else if (url.contains("/delete"))
+		else if (url.contains("/admin/delete"))
 		{
 			String id = req.getParameter("id");
 			try {
@@ -77,9 +79,9 @@ public class CartController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			resp.sendRedirect(req.getContextPath() + "/cart");
+			resp.sendRedirect(req.getContextPath() + "/admin/cart");
 		}
-		else if (url.contains("/remove"))
+		else if (url.contains("/admin/remove"))
 		{
 			HttpSession session = req.getSession();
 			User user = (User) session.getAttribute("account");
@@ -87,13 +89,13 @@ public class CartController extends HttpServlet {
 			int id = cart.getCart_id();
 			try {
 				cartService.delete(id);
-				resp.sendRedirect(req.getContextPath() + "/cart");
+				resp.sendRedirect(req.getContextPath() + "/admin/cart");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		else if (url.contains("/update"))
+		else if (url.contains("/admin/update"))
 		{
 			String id = req.getParameter("id");
 			String qty = req.getParameter("quantity");
@@ -117,7 +119,7 @@ public class CartController extends HttpServlet {
 					e.printStackTrace();
 				}
 			}	
-			resp.sendRedirect(req.getContextPath() + "/cart");
+			resp.sendRedirect(req.getContextPath() + "/admin/cart");
 		}
 		HttpSession session = req.getSession();
 		int cartItemCount = 0;
