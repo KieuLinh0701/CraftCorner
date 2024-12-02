@@ -50,8 +50,8 @@
 		<div class="header-navigation">
 			<ul>
 				<li><a href="#"> Shop </a></li>
-				<li><a href="#"> Blogs </a></li>
-				<li><a href="#"> Design ideas </a></li>
+				<li><a href="${pageContext.request.contextPath}/blog"> Blogs </a></li>
+				<li><a href="${pageContext.request.contextPath}/designs"> Design ideas </a></li>
 			</ul>
 		</div>
 		<!-- END NAVIGATION -->

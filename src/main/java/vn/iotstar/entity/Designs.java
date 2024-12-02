@@ -129,4 +129,18 @@ public class Designs implements Serializable {
 	public void setDesignItems(Set<DesignItem> designItems) {
 		this.designItems = designItems;
 	}
+	@Override
+	public String toString() {
+	    return "Designs{" +
+	            "designId=" + designId +
+	            ", title='" + title + '\'' +
+	            ", content='" + content + '\'' +
+	            ", image='" + image + '\'' +
+	            ", createDate=" + createDate +
+	            ", user=" + (user != null ? user.getId() : "null") +
+	            ", status=" + status +
+	            ", designItems=" + (designItems != null ? designItems.size() : "null") +
+	            '}';
+	}
+
 }
