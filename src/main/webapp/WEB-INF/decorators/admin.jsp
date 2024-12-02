@@ -74,6 +74,9 @@
 <link href="${URL}assets/frontend/layout/css/custom.css"
 	rel="stylesheet">
 <!-- Theme styles END -->
+
+<link rel="stylesheet" href="${URL}assets/global/plugins/fullcalendar/fullcalendar.css">
+<!-- Theme styles END -->
 </head>
 <!-- Head END -->
 
@@ -150,6 +153,9 @@
 	<script src="${URL}assets/frontend/pages/scripts/layerslider-init.js"
 		type="text/javascript"></script>
 	<!-- END LayerSlider -->
+	
+		<script src="${URL}assets/global/plugins/fullcalendar/fullcalendar.js"
+			type="text/javascript"></script>
 
 	<script src="${URL}assets/frontend/layout/scripts/layout.js"
 		type="text/javascript"></script>
