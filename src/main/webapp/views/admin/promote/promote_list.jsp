@@ -4,6 +4,19 @@
 <div class="container">
     <h1 class="text-center mt-5">Danh Sách Voucher Khuyến Mãi</h1>
 
+    <!-- Form tìm kiếm theo phần trăm giảm giá -->
+    <form action="promote" method="get" class="mb-4">
+        <div class="form-group row">
+            <label for="percent" class="col-sm-2 col-form-label">Tìm kiếm:</label>
+            <div class="col-sm-7">
+                <input type="number" class="form-control" id="percent" name="percent" placeholder="Nhập % giảm giá" min="0" max="100">
+            </div>
+            <div class="col-sm-3 text-end">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        </div>
+    </form>
+
     <!-- Nút thêm mới voucher -->
     <a href="promote/add" class="btn btn-success" style="margin-bottom: 10px">Thêm Mới</a>
 

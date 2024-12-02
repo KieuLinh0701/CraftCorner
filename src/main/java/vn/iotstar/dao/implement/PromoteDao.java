@@ -32,13 +32,12 @@ public class PromoteDao implements IPromoteDao {
 	public List<Promote> findPromoteForOrder(int totalPrice) {
 		List<Promote> listPromote = new ArrayList<>();
 		LocalDateTime currentDate = LocalDateTime.now();
-		
+
 		List<Promote> all = findAll();
-		for (Promote x: all) {
-			if ((currentDate.isEqual(x.getStartDate()) || currentDate.isAfter(x.getStartDate())) 
+		for (Promote x : all) {
+			if ((currentDate.isEqual(x.getStartDate()) || currentDate.isAfter(x.getStartDate()))
 					&& (currentDate.isEqual(x.getEndDate()) || currentDate.isBefore(x.getEndDate()))
-					&& x.getQuantity() > x.getQuantityUsed()
-					&& totalPrice >= x.getMinOrderTotal()) {
+					&& x.getQuantity() > x.getQuantityUsed() && totalPrice >= x.getMinOrderTotal()) {
 				listPromote.add(x);
 			}
 		}
@@ -65,36 +64,52 @@ public class PromoteDao implements IPromoteDao {
 	@Override
 	public void insert(Promote promote) {
 		EntityManager enma = JPAConfig.getEntityManager();
-        EntityTransaction trans = enma.getTransaction();
-        try {
-            trans.begin();
-            enma.persist(promote);
-            trans.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            trans.rollback();
-            throw e;
-        } finally {
-            enma.close();
-        }
-		
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			enma.persist(promote);
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			throw e;
+		} finally {
+			enma.close();
+		}
+
 	}
 
 	@Override
 	public void delete(Promote promote) {
 		EntityManager enma = JPAConfig.getEntityManager();
-        EntityTransaction trans = enma.getTransaction();
-        try {
-            trans.begin();
-            promote = enma.merge(promote);
-            enma.remove(promote);
-            trans.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            trans.rollback();
-            throw e;
-        } finally {
-            enma.close();
-        }		
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			promote = enma.merge(promote);
+			enma.remove(promote);
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			throw e;
+		} finally {
+			enma.close();
+		}
+	}
+
+	@Override
+	public List<Promote> findByPercent(int percent) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		try {
+			TypedQuery<Promote> query = enma.createQuery("SELECT p FROM Promote p WHERE p.discountPercent = :percent",
+					Promote.class);
+			query.setParameter("percent", percent);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			enma.close();
+		}
 	}
 }

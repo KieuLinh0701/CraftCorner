@@ -17,5 +17,8 @@ public interface IPromoteService {
     void insert(Promote promote);
     
     void delete(Promote promote);
+    
+    List<Promote> findByPercent(int percent);
+
 
 }

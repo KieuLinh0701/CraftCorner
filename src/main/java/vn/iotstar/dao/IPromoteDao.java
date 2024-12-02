@@ -17,5 +17,7 @@ public interface IPromoteDao {
     void update(Promote promote);
 
     void delete(Promote promote);
+    
+    List<Promote> findByPercent(int percent);
 
 }

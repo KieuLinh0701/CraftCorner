@@ -37,6 +37,8 @@ public class Constant {
 	public static final String PAYMENT_METHOD_LIST = "/views/admin/payment_method/payment_method_list.jsp";
 	public static final String PAYMENT_METHOD_ADD = "/views/admin/payment_method/payment_method_add.jsp";
 	public static final String PAYMENT_METHOD_EDIT = "/views/admin/payment_method/payment_method_edit.jsp";
+	public static final String PAYMENT_METHOD_DETAIL = "/views/admin/payment_method/payment_method_detail.jsp";
+
 
 
 

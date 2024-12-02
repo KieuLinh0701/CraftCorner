@@ -29,13 +29,13 @@ public class PaymentMethod implements Serializable {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "bank_name", columnDefinition = "NVARCHAR(255) NOT NULL")
+    @Column(name = "bank_name", columnDefinition = "NVARCHAR(255)")
     private String bankName;
 
-    @Column(name = "account_number", columnDefinition = "NVARCHAR(255) NOT NULL")
+    @Column(name = "account_number", columnDefinition = "NVARCHAR(255)")
     private String accountNumber;
 
-	@Column(name = "account_owner", columnDefinition = "NVARCHAR(255) NOT NULL")
+	@Column(name = "account_owner", columnDefinition = "NVARCHAR(255)")
 	private String accountOwner;
     
     @Column(name = "image", columnDefinition = "NVARCHAR(255) NULL")

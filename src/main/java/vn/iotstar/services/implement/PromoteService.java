@@ -43,4 +43,9 @@ public class PromoteService implements IPromoteService{
 		
 	}
 
+	@Override
+	public List<Promote> findByPercent(int percent) {
+		return promoteDao.findByPercent(percent);
+	}
+
 }

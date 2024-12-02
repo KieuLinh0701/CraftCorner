@@ -49,7 +49,11 @@
 					<td>
 						<!-- Nút sửa và xóa --> <a
 						href="payment-method/edit?id=${paymentMethod.id}"
-						class="btn btn-primary">Sửa</a> <a
+						class="btn btn-primary">Sửa</a>
+						  <a
+						href="payment-method/detail?id=${paymentMethod.id}"
+						class="btn btn-success">Xem chi tiết</a>
+						 <a
 						href="payment-method/delete?id=${paymentMethod.id}"
 						class="btn btn-danger"
 						onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
