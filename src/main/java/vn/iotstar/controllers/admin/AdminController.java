@@ -80,17 +80,16 @@ public class AdminController extends HttpServlet{
     	String url = req.getRequestURI();
     	///admin/adminsmanage/insert
         try {
-            if (url.contains("/admin/AdminManagement/adminadd.jsp")) {
+            if (url.contains("/admin/adminsmanage/insert")) {
                 // Lấy dữ liệu từ form
+            	User user = new User();
                 String fullname = req.getParameter("fullname");
                 String email = req.getParameter("email");
                 String phone = req.getParameter("phone");
                 String password = req.getParameter("password");
-                String statusStr = req.getParameter("status");
-                int status = (statusStr != null && !statusStr.isEmpty()) ? Integer.parseInt(statusStr) : 1; // Mặc định status = 1
-
-                // Tạo đối tượng User
-                User user = new User();
+                int status = Integer.parseInt(req.getParameter("status"));
+                
+                
                 user.setFullname(fullname);
                 user.setEmail(email);
                 user.setPhone(phone);
@@ -98,10 +97,10 @@ public class AdminController extends HttpServlet{
                 user.setStatus(status);
                 user.setCreateDate(LocalDateTime.now()); // Gán ngày tạo hiện tại
 
-                // Thêm role vào user
-                Role roleObj = new Role();
-                roleObj.setId(1); // Set ID của Role Admin
-                user.setRole(roleObj);
+//                // Thêm role vào user
+//                Role roleObj = new Role();
+//                roleObj.setId(1); // Set ID của Role Admin
+//                user.setRole(roleObj);
 
                 // Upload ảnh nếu có
                 String uploadPath = getServletContext().getRealPath("/") + "uploads";

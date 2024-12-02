@@ -47,7 +47,7 @@ public class UserController extends HttpServlet{
         } else if (url.contains("/admin/user/add")) {
             req.getRequestDispatcher("/views/useradd.jsp").forward(req, resp);
         }
-//            else if (url.contains("/admin/user/delete")) {
+//        else if (url.contains("/admin/user/delete")) {
 //            int id = Integer.parseInt(req.getParameter("id"));
 //            userService.delete(id);
 //            resp.sendRedirect(req.getContextPath() + "/admin/users");
@@ -106,5 +106,4 @@ public class UserController extends HttpServlet{
             resp.sendRedirect(req.getContextPath() + "/admin/users");
         }
     }
-
 }

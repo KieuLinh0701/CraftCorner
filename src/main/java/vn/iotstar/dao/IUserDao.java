@@ -2,6 +2,7 @@ package vn.iotstar.dao;
 
 import java.util.List;
 
+import vn.iotstar.entity.Product;
 import vn.iotstar.entity.User;
 
 public interface IUserDao {
