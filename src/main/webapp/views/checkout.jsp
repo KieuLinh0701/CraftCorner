@@ -14,7 +14,6 @@
 				<!-- BEGIN CHECKOUT PAGE -->
 				<div class="panel-group checkout-page accordion scrollable"
 					id="checkout-page">
-
 					<div class="panel-body row">
 						<div class="col-md-6 col-sm-6">
 							<div class="goods-page">
@@ -80,20 +79,21 @@
 						</div>
 					</div>
 
-					<div class="panel-body row">
-						<div class="goods-page">
+					<div class="panel-body row ">
+						<div class="goods-page"
+							style="padding-right: 15px; padding-left: 15px;">
 							<div class="goods-data clearfix">
 								<div class="table-wrapper-responsive">
 									<h3>Products</h3>
-									<table summary="Shopping cart">
+									<table>
+										<tr>
+											<th class="goods-page-image">Image</th>
+											<th class="goods-page-description">Description</th>
+											<th class="goods-page-quantity">Quantity</th>
+											<th class="goods-page-price">Unit price</th>
+											<th class="goods-page-total">Total</th>
+										</tr>
 										<c:forEach var="cartItem" items="${listCartItem}">
-											<tr>
-												<th class="goods-page-image">Image</th>
-												<th class="goods-page-description">Description</th>
-												<th class="goods-page-quantity">Quantity</th>
-												<th class="goods-page-price">Unit price</th>
-												<th class="goods-page-total">Total</th>
-											</tr>
 											<tr>
 												<td class="goods-page-image"><a href="#"> <c:if
 															test="${cartItem.product.image.substring(0,5) != 'https'}">
