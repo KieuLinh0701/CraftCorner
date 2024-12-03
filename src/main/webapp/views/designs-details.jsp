@@ -3,13 +3,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-</head>
-<body>
+
 <div class="main">
 	<div class="container">
 		<div class="row margin-bottom-40">
@@ -20,7 +14,7 @@
 					<div class="row">
 						<div class="col-md-8 col-sm-8 blog-item">
 							<div class="blog-item-img">
-								<div class="front-carousel">	
+								<div class="front-carousel">
 									<c:if test="${design.image.substring(0,5) != 'https'}">
 										<c:url value="/image?fname=${design.image}" var="imgUrl"></c:url>
 									</c:if>
@@ -30,10 +24,12 @@
 									<img class="img-responsive" alt="${design.title}"
 										src="${imgUrl}">
 									<hr class="blog-post-sep">
-									<p style="font-size:15px">${design.content }</p>
+									<p style="font-size: 15px">${design.content }</p>
 									<ul class="blog-info">
-										<li><i class="fa fa-user"></i>Người tạo : ${design.user.fullname }</li>
-										<li><i class="fa fa-calendar"></i>Ngày tạo: ${design.createDate }</li>
+										<li><i class="fa fa-user"></i>Người tạo :
+											${design.user.fullname }</li>
+										<li><i class="fa fa-calendar"></i>Ngày tạo:
+											${design.createDate }</li>
 									</ul>
 								</div>
 							</div>
@@ -57,11 +53,13 @@
 										<h4>
 											<a href="#">${item.product.name}</a>
 										</h4>
-										<p>Material: ${item.product.material} <br>
-										Color: ${item.product.color}<br>
-										Size: height: ${item.product.height} - length:
-											${item.product.length} - width: ${item.product.width}<br>
-										Price: ${item.product.price}</p>
+										<p>
+											Material: ${item.product.material} <br> Color:
+											${item.product.color}<br> Size: height:
+											${item.product.height} - length: ${item.product.length} -
+											width: ${item.product.width}<br> Price:
+											${item.product.price}
+										</p>
 									</div>
 								</div>
 								<hr style="margin: 5px 0;">
@@ -73,4 +71,3 @@
 		</div>
 	</div>
 </div>
-</body>

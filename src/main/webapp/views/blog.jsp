@@ -2,22 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
-<body>
-	<!-- Bootstrap CSS -->
 
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-		rel="stylesheet">
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-		rel="stylesheet">
+<!-- Bootstrap CSS -->
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <style>
 /* Hiệu ứng hover cho card */
@@ -61,105 +52,101 @@
 .position-relative img {
 	z-index: 1;
 }
+.text-overlay-desc {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem; /* Tăng kích thước chữ */
+    font-weight: bold;
+    z-index: 2;
+}
 </style>
 
 
+<section class="bg-dark text-white py-5 text-center position-relative"
+	style="background-image: url('https://birchwoodfurniture.ca/wp-content/uploads/2023/07/Modern-Living-Room-Furniture-Ideas-Hero-1024x672.jpg'); background-size: cover;">
+	<div class="container position-relative">
+		<h1 class="position-absolute text-overlay">Blogs</h1>
+		<p class="lead position-absolute text-overlay-desc">Ở đây các câu
+			chuyện xoay quanh thiết kế nội thất, chia sẻ những ý tưởng sáng
+			tạo</p>
+	</div>
+</section>
 
-	<!-- Header -->
-	<header class="bg-dark text-white py-5 text-center position-relative"
-		style="background-image: url('../images/blog2.png'); background-size: cover;">
-		<div class="container position-relative">
-			<h1 class="position-absolute text-overlay">Blogs</h1>
-			<p class="lead position-absolute text-overlay-desc">Ở đây các câu
-				chuyện xoay quanh thiết kế nội thất, chia sẻ những ý tưởng sáng
-				tạo...</p>
+
+<!-- Tìm kiếm theo điều kiện -->
+<form action="blog" method="get" class="container my-4">
+	<input type="hidden" name="action" value="list">
+
+	<div class="row g-3">
+		<!-- Tìm kiếm từ khóa -->
+		<div class="col-lg-3 col-md-4">
+			<label for="query" class="form-label">Tìm kiếm từ khóa</label> <input
+				type="text" id="query" name="query" class="form-control"
+				placeholder="Nhập từ khóa..." value="${query}">
 		</div>
-	</header>
 
-
-	<!-- Tìm kiếm theo điều kiện -->
-	<form action="blog" method="get" class="container my-4">
-		<input type="hidden" name="action" value="list">
-
-		<div class="row g-3">
-			<!-- Tìm kiếm từ khóa -->
-			<div class="col-lg-3 col-md-4">
-				<label for="query" class="form-label">Tìm kiếm từ khóa</label> <input
-					type="text" id="query" name="query" class="form-control"
-					placeholder="Nhập từ khóa..." value="${query}">
-			</div>
-
-			<!-- Tìm kiếm theo ngày bắt đầu -->
-			<div class="col-lg-2 col-md-3">
-				<label for="minDate" class="form-label">Từ ngày</label> <input
-					type="date" id="minDate" name="minDate" class="form-control"
-					max="${maxDateLimit}" value="${minDate}">
-			</div>
-
-			<!-- Tìm kiếm theo ngày kết thúc -->
-			<div class="col-lg-2 col-md-3">
-				<label for="maxDate" class="form-label">Đến ngày</label> <input
-					type="date" id="maxDate" name="maxDate" class="form-control"
-					max="${maxDateLimit}" value="${maxDate}">
-			</div>
-
-			<!-- Nút tìm kiếm -->
-			<div class="col-lg-2 col-md-3 d-flex align-items-end">
-				<button type="submit" class="btn btn-primary w-100">Tìm
-					kiếm</button>
-			</div>
-
-			<!-- Nút hiển thị tất cả danh sách -->
-			<div class="col-lg-2 col-md-3 d-flex align-items-end">
-				<a href="blog" class="btn btn-secondary w-100">Hiển thị tất cả</a>
-			</div>
+		<!-- Tìm kiếm theo ngày bắt đầu -->
+		<div class="col-lg-2 col-md-3">
+			<label for="minDate" class="form-label">Từ ngày</label> <input
+				type="date" id="minDate" name="minDate" class="form-control"
+				max="${maxDateLimit}" value="${minDate}">
 		</div>
-	</form>
+
+		<!-- Tìm kiếm theo ngày kết thúc -->
+		<div class="col-lg-2 col-md-3">
+			<label for="maxDate" class="form-label">Đến ngày</label> <input
+				type="date" id="maxDate" name="maxDate" class="form-control"
+				max="${maxDateLimit}" value="${maxDate}">
+		</div>
+
+		<!-- Nút tìm kiếm -->
+		<div class="col-lg-2 col-md-3 d-flex align-items-end">
+			<button type="submit" class="btn btn-primary w-100">Tìm kiếm</button>
+		</div>
+
+		<!-- Nút hiển thị tất cả danh sách -->
+		<div class="col-lg-2 col-md-3 d-flex align-items-end">
+			<a href="blog" class="btn btn-secondary w-100">Hiển thị tất cả</a>
+		</div>
+	</div>
+</form>
 
 
+<!-- Blog Section -->
+<section class="container my-5">
+	<div class="row">
+		<c:forEach var="blog" items="${blogs}">
+			<div class="col-md-6 mb-4">
+				<div class="card">
+					<a href="blog?action=details&id=${blog.blogId}"> <img
+						src="${pageContext.request.contextPath}${blog.image}"
+						class="card-img-top" alt="Hình ảnh blog">
 
-
-
-	<!-- Blog Section -->
-	<section class="container my-5">
-		<div class="row">
-			<c:forEach var="blog" items="${blogs}">
-				<div class="col-md-6 mb-4">
-					<div class="card">
-						<a href="blog?action=details&id=${blog.blogId}"> <img
-							src="${pageContext.request.contextPath}${blog.image}"
-							class="card-img-top" alt="Hình ảnh blog">
-
-							<div class="card-body">
-								<h5 class="card-title">${blog.blogTitle}</h5>
-								<p class="card-text text-muted">${fn:substring(blog.content, 0, 100)}...</p>
-								<p class="card-text text-end text-muted">
-									<small>Ngày tạo: ${blog.createdAt}</small>
-								</p>
-							</div>
-						</a>
-					</div>
+						<div class="card-body">
+							<h5 class="card-title">${blog.blogTitle}</h5>
+							<p class="card-text text-muted">${fn:substring(blog.content, 0, 100)}...</p>
+							<p class="card-text text-end text-muted">
+								<small>Ngày tạo: ${blog.createdAt}</small>
+							</p>
+						</div>
+					</a>
 				</div>
+			</div>
+		</c:forEach>
+	</div>
+
+	<!-- Pagination -->
+	<nav class="mt-4">
+		<ul class="pagination justify-content-center">
+			<c:forEach begin="1" end="${totalPages}" var="pageNum">
+				<li class="page-item ${pageNum == currentPage ? 'active' : ''}">
+					<a class="page-link"
+					href="blog?page=${pageNum}&query=${query}&minDate=${minDate}&maxDate=${maxDate}">
+						${pageNum} </a>
+				</li>
 			</c:forEach>
-		</div>
+		</ul>
+	</nav>
+</section>
 
-
-
-		<!-- Pagination -->
-		<nav class="mt-4">
-			<ul class="pagination justify-content-center">
-				<c:forEach begin="1" end="${totalPages}" var="pageNum">
-					<li class="page-item ${pageNum == currentPage ? 'active' : ''}">
-						<a class="page-link"
-						href="blog?page=${pageNum}&query=${query}&minDate=${minDate}&maxDate=${maxDate}">
-							${pageNum} </a>
-					</li>
-				</c:forEach>
-			</ul>
-		</nav>
-	</section>
-
-	
-
-</body>
-</html>
