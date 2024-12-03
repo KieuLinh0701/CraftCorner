@@ -29,5 +29,10 @@ public class ProductService implements IProductService {
         EntityManager em = JPAConfig.getEntityManager();
         return em.find(Product.class, productId);
     }
+    
+    @Override
+    public List<Product> getRelatedProducts(int productId) {
+        return productDao.getRelatedProducts(productId);
+    }
 
 }

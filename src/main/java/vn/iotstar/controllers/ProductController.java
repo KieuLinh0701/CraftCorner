@@ -32,7 +32,7 @@ public class ProductController extends HttpServlet {
                 req.setAttribute("product", product);
 
                 // Forward the request to the JSP page for displaying the product
-                req.getRequestDispatcher("/views/shop-item.jsp").forward(req, resp);
+                req.getRequestDispatcher(Constant.PRODUCTS).forward(req, resp);
             } catch (NumberFormatException e) {
                 // Handle invalid ID format
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid product ID");

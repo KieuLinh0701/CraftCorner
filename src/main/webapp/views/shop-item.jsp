@@ -40,10 +40,11 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6">
                   <div class="product-main-image">
+    <div class="product-main-image">
     <c:choose>
         <c:when test="${not empty product.image}">
             <!-- Resolve the image path correctly using c:url -->
-            <img src="<c:url value='/assets/img/product/${product.image}' />" class="img-responsive" alt="${product.name}" />
+            <img src="${product.image}" class="img-responsive" alt="${product.name}" />
         </c:when>
         <c:otherwise>
             <!-- Default image if product has no image -->
@@ -51,6 +52,7 @@
         </c:otherwise>
     </c:choose>
 </div>
+
                             <h3><a href="shop-item.html">${product.name}</a></h3>
                             <div class="pi-price">${product.price}VND</div>
                             <a href="#" class="btn btn-default add2cart">Add to cart</a>
@@ -58,20 +60,13 @@
                     </div>
                
                   </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                  <h1>Cool green dress with red bell</h1>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span>47.00</strong>                     
-                    </div>
+                </div>                                   
                     <div class="availability">
                       Availability: <strong>In Stock</strong>
                     </div>
                   </div>
                   <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
+                   
                   </div>
                   <div class="product-page-options">
                     <div class="pull-left">
@@ -95,7 +90,7 @@ Nostrud duis molestie at dolore.</p>
                   </ul>
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="Description">
-                      <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod laoreet dolore magna aliquarm erat sit volutpat Nostrud duis molestie at dolore. </p>
+                       <p>${product.description}</p>
                     </div>
                     <div class="tab-pane fade" id="Information">
                       <table class="datasheet">
@@ -103,25 +98,29 @@ Nostrud duis molestie at dolore.</p>
                           <th colspan="2">Additional features</th>
                         </tr>
                         <tr>
-                          <td class="datasheet-features-type">Value 1</td>
-                          <td>21 cm</td>
+                          <td class="datasheet-features-type">Color</td>
+                          <td>${product.color}</td>
                         </tr>
                         <tr>
-                          <td class="datasheet-features-type">Value 2</td>
-                          <td>700 gr.</td>
+                          <td class="datasheet-features-type">Height</td>
+                          <td>${product.height}</td>
                         </tr>
                         <tr>
-                          <td class="datasheet-features-type">Value 3</td>
-                          <td>10 person</td>
+                          <td class="datasheet-features-type">Length</td>
+                          <td>${product.length}</td>
                         </tr>
                         <tr>
-                          <td class="datasheet-features-type">Value 4</td>
-                          <td>14 cm</td>
+                          <td class="datasheet-features-type">Material</td>
+                          <td>${product.material}</td>
                         </tr>
                         <tr>
-                          <td class="datasheet-features-type">Value 5</td>
-                          <td>plastic</td>
+                          <td class="datasheet-features-type">Stored Quantity</td>
+                          <td>${product.quantity}</td>
                         </tr>
+                        <tr>
+                          <td class="datasheet-features-type">Width</td>
+                          <td>${product.width}</td>
+                        </tr>                     
                       </table>
                     </div>
                     <div class="tab-pane fade in active" id="Reviews">
@@ -147,230 +146,51 @@ Nostrud duis molestie at dolore.</p>
                         </div>
                       </div>
 
-                      <!-- BEGIN FORM-->
-                      <form action="#" class="reviews-form" role="form">
-                        <h2>Write a review</h2>
-                        <div class="form-group">
-                          <label for="name">Name <span class="require">*</span></label>
-                          <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                          <label for="review">Review <span class="require">*</span></label>
-                          <textarea class="form-control" rows="8" id="review"></textarea>
-                        </div>
-                                       
-                          <button type="submit" class="btn btn-primary">Send</button>
-                        </div>
-                      </form>
-                      <!-- END FORM--> 
-                    </div>
-                  </div>
-                </div>
+<!-- BEGIN FORM -->
+<form action="#" class="reviews-form" role="form">
+  <h2>Write a review</h2>
+  
+  <div class="form-group">
+    <label for="name">Name <span class="require">*</span></label>
+    <input type="text" class="form-control" id="name" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  
+  <div class="form-group">
+    <label for="review">Review <span class="require">*</span></label>
+    <textarea class="form-control" rows="8" id="review" required></textarea>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
+<!-- END FORM -->
+
 
             
               </div>
             </div>
-          </div>
+         
           <!-- END CONTENT -->
-        </div>
+     
         <!-- END CONTENT -->
 
         <!-- BEGIN SIMILAR PRODUCTS -->
-        <div class="row margin-bottom-40">
-          <div class="col-md-12 col-sm-12">
-            <h2>Most popular products</h2>
-            <div class="owl-carousel owl-carousel4">
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k1.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  <div class="sticker sticker-new"></div>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k2.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k2.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress2</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k3.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k3.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k4.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k4.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress4</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                  <div class="sticker sticker-sale"></div>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k1.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k1.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress5</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-              <div>
-                <div class="product-item">
-                  <div class="pi-img-wrapper">
-                    <img src="${URL}assets/frontend/pages/img/products/k2.jpg" class="img-responsive" alt="Berry Lace Dress">
-                    <div>
-                      <a href="${URL}assets/frontend/pages/img/products/k2.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                    </div>
-                  </div>
-                  <h3><a href="shop-item.html">Berry Lace Dress6</a></h3>
-                  <div class="pi-price">$29.00</div>
-                  <a href="#" class="btn btn-default add2cart">Add to cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%@ include file="/commons/web/similar-products.jsp"%>
         <!-- END SIMILAR PRODUCTS -->
-      </div>
-    </div>
+   
 
    
    
     <!-- BEGIN STEPS -->
-    <div class="steps-block steps-block-red">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-truck"></i>
-            <div>
-              <h2>Free shipping</h2>
-              <em>Express delivery withing 3 days</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-gift"></i>
-            <div>
-              <h2>Daily Gifts</h2>
-              <em>3 Gifts daily for lucky customers</em>
-            </div>
-            <span>&nbsp;</span>
-          </div>
-          <div class="col-md-4 steps-block-col">
-            <i class="fa fa-phone"></i>
-            <div>
-              <h2>477 505 8877</h2>
-              <em>24/7 customer care available</em>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+   <%@ include file="/commons/web/steps.jsp"%>
     <!-- END STEPS -->
 
    <!-- BEGIN fast view of a product -->
-    <div id="product-pop-up" style="display: none; width: 700px;">
-            <div class="product-page product-pop-up">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-3">
-                  <div class="product-main-image">
-                    <img src="${URL}assets/frontend/pages/img/products/model7.jpg" alt="Cool green dress with red bell" class="img-responsive">
-                  </div>
-                  <div class="product-other-images">
-                    <a href="#" class="active"><img alt="Berry Lace Dress" src="${URL}assets/frontend/pages/img/products/model3.jpg"></a>
-                    <a href="#"><img alt="Berry Lace Dress" src="${URL}assets/frontend/pages/img/products/model4.jpg"></a>
-                    <a href="#"><img alt="Berry Lace Dress" src="${URL}assets/frontend/pages/img/products/model5.jpg"></a>
-                  </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-9">
-                  <h2>Cool green dress with red bell</h2>
-                  <div class="price-availability-block clearfix">
-                    <div class="price">
-                      <strong><span>$</span>47.00</strong>
-                      <em>$<span>62.00</span></em>
-                    </div>
-                    <div class="availability">
-                      Availability: <strong>In Stock</strong>
-                    </div>
-                  </div>
-                  <div class="description">
-                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat 
-Nostrud duis molestie at dolore.</p>
-                  </div>
-                  <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control input-sm">
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control input-sm">
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="product-page-cart">
-                    <div class="product-quantity">
-                        <input id="product-quantity2" type="text" value="1" readonly class="form-control input-sm">
-                    </div>
-                    <button class="btn btn-primary" type="submit">Add to cart</button>
-                    <a href="shop-item.html" class="btn btn-default">More details</a>
-                  </div>
-                </div>
-
-                <div class="sticker sticker-sale"></div>
-              </div>
-            </div>
-    </div>
+    <%@ include file="/commons/web/fast-view-products.jsp"%>
     <!-- END fast view of a product -->
 
     <!-- Load javascripts at bottom, this will reduce page load time -->

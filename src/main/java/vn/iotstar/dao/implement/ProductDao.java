@@ -38,4 +38,21 @@ public class ProductDao implements IProductDao {
             entityManager.close();
         }
     }
+    
+    @Override
+    public List<Product> getRelatedProducts(int productId) {
+        EntityManager em = JPAConfig.getEntityManager();
+        try {
+            // Query to fetch related products based on some criteria (e.g., same category)
+            String jpql = "SELECT p FROM Product p WHERE p.category = " +
+                          "(SELECT p2.category FROM Product p2 WHERE p2.product_id = :productId) " +
+                          "AND p.product_id <> :productId";
+            TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+            query.setParameter("productId", productId);
+            query.setMaxResults(5); // Limit the number of related products
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

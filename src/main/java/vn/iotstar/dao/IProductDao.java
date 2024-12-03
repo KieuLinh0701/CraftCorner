@@ -6,5 +6,6 @@ import vn.iotstar.entity.Product;
 public interface IProductDao {
 	List<Product> getAllProducts(); 
     List<Product> getNewArrivals();
-    Product getProductById(int productId);  
+    Product getProductById(int productId);
+    List<Product> getRelatedProducts(int productId);
 }
