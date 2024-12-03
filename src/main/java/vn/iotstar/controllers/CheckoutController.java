@@ -163,19 +163,8 @@ public class CheckoutController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			if (payment.getBankName().contains("COD")) {
-				req.setAttribute("inform", "Thank you for your order. Your order will be shipped shortly");
-				req.getRequestDispatcher(Constant.ORDER_SUCCESS).forward(req, resp);
-			}
-			else {
-				req.setAttribute("inform", "Thanks for your order! Please make a bank transfer using the account details below");
-				req.setAttribute("description",
-								"Bank Name: " + payment.getBankName() + "\n" +
-							    "Account Number: " + payment.getAccountNumber() + "\n" +
-							    "Account Owner: " + payment.getAccountOwner());
-				req.getRequestDispatcher(Constant.ORDER_SUCCESS).forward(req, resp);
-			}
+			req.setAttribute("payment", payment);
+			req.getRequestDispatcher(Constant.ORDER_SUCCESS).forward(req, resp);
 		}
 	}
 

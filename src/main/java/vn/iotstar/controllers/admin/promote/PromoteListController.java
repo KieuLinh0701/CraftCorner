@@ -21,23 +21,23 @@ public class PromoteListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	String percentStr = req.getParameter("percent");
-        List<Promote> promotes;
+    	String voucherCode = req.getParameter("voucherCode");
+        String percentStr = req.getParameter("percent");
 
-        if (percentStr != null && !percentStr.isEmpty()) {
-            try {
-                int percent = Integer.parseInt(percentStr);
-                // Tìm kiếm các chương trình khuyến mãi theo phần trăm giảm giá
-                promotes = promoteService.findByPercent(percent);
-            } catch (NumberFormatException e) {
-                // Xử lý lỗi nếu tham số không hợp lệ
-                req.setAttribute("error", "Giá trị phần trăm không hợp lệ.");
-                promotes = promoteService.findAll(); // Hiển thị tất cả nếu có lỗi
-            }
-        } else {
-            // Nếu không có tham số, hiển thị tất cả chương trình khuyến mãi
-            promotes = promoteService.findAll();
-        }        req.setAttribute("promotes", promotes);
+        List<Promote> promotes;
+        try {
+            Integer percent = (percentStr != null && !percentStr.isEmpty()) ? Integer.parseInt(percentStr) : null;
+
+            // Tìm kiếm theo cả voucherCode và percent
+            promotes = promoteService.findByVoucherCodeOrPercent(voucherCode, percent);
+
+        } catch (NumberFormatException e) {
+            // Xử lý lỗi nếu tham số không hợp lệ
+            req.setAttribute("error", "Giá trị phần trăm không hợp lệ.");
+            promotes = promoteService.findAll(); // Hiển thị tất cả nếu có lỗi
+        }
+
+        req.setAttribute("promotes", promotes);
         req.getRequestDispatcher(Constant.PROMOTE_LIST).forward(req, resp);
     }
 

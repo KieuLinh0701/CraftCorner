@@ -29,9 +29,15 @@ public class Constant {
 	public static final String ACCOUNT = "/views/myAccount.jsp";
 	public static final String ADMIN_ACCOUNT = "/views/admin/myAccount.jsp";
 	public static final String ORDER_SUCCESS = "/views/orderSuccess.jsp";
+<<<<<<< HEAD
 
+=======
+	public static final String PRODUCTS = "/views/shop-item.jsp";
+	
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 	public static final String ADMIN_HOME = "/views/admin/home.jsp";
 	public static final String DESIGN_DETAIL_MANAGEMENT = "/views/admin/design-detail.jsp";
+	public static final String PRODUCT_DETAIL_MANAGEMENT = "/views/admin/product-detail.jsp";
 	public static final String DESIGN_ADD_STEP1 = "/views/admin/design-add-step1.jsp";
 	public static final String DESIGN_ADD_STEP2 = "/views/admin/design-add-step2.jsp";
 	public static final String DESIGN_EDIT_STEP1 = "/views/admin/design-edit-step1.jsp";

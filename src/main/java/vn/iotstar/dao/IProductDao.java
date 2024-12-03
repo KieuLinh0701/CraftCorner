@@ -1,6 +1,7 @@
 package vn.iotstar.dao;
 
 import java.util.List;
+<<<<<<< HEAD
 
 import vn.iotstar.entity.Designs;
 import vn.iotstar.entity.Product;
@@ -31,4 +32,13 @@ public interface IProductDao {
 	
 	int productCount(int category_id);
 
+=======
+import vn.iotstar.entity.Product;
+
+public interface IProductDao {
+	List<Product> getAllProducts(); 
+    List<Product> getNewArrivals();
+    Product getProductById(int productId);
+    List<Product> getRelatedProducts(int productId);
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 }

@@ -98,18 +98,27 @@ public class PromoteDao implements IPromoteDao {
 	}
 
 	@Override
-	public List<Promote> findByPercent(int percent) {
-		EntityManager enma = JPAConfig.getEntityManager();
-		try {
-			TypedQuery<Promote> query = enma.createQuery("SELECT p FROM Promote p WHERE p.discountPercent = :percent",
-					Promote.class);
-			query.setParameter("percent", percent);
-			return query.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		} finally {
-			enma.close();
-		}
+	public List<Promote> findByVoucherCodeOrPercent(String voucherCode, Integer discountPercent) {
+	    EntityManager enma = JPAConfig.getEntityManager();
+	    try {
+	        String jpql = "SELECT p FROM Promote p WHERE " +
+	                      "(:voucherCode IS NULL OR p.voucherCode = :voucherCode) AND " +
+	                      "(:discountPercent IS NULL OR p.discountPercent = :discountPercent)";
+
+	        TypedQuery<Promote> query = enma.createQuery(jpql, Promote.class);
+
+	        // Nếu voucherCode null hoặc rỗng, set thành null trong query
+	        query.setParameter("voucherCode", (voucherCode != null && !voucherCode.trim().isEmpty()) ? voucherCode : null);
+
+	        // Nếu discountPercent null, truyền giá trị null vào query
+	        query.setParameter("discountPercent", discountPercent);
+
+	        return query.getResultList();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        throw e;
+	    } finally {
+	        enma.close();
+	    }
 	}
 }

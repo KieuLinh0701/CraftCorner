@@ -36,7 +36,8 @@ public class CartController extends HttpServlet {
 			HttpSession session = req.getSession();
 			User user = (User) session.getAttribute("account");			
 			if (user == null) {
-				req.setAttribute("alert", "To access your shopping cart, please log in to your account!");
+				resp.sendRedirect(req.getContextPath() + "/login");
+	            return;
 			} else {
 				Cart cart = cartService.findByUser(user.getId());
 				if (cart == null) {
@@ -44,7 +45,6 @@ public class CartController extends HttpServlet {
 				} 
 				else 
 				{
-					
 					Set<CartItem> listCartItem = cart.getCartItems();
 					if (listCartItem.size() == 0) 
 					{

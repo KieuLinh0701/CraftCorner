@@ -112,7 +112,7 @@
 		type="text/javascript"></script>
 	<script src="${URL}assets/frontend/layout/scripts/back-to-top.js"
 		type="text/javascript"></script>
-	<script src="${URL}assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	
 	<script
 		src="${URL}assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
 		type="text/javascript"></script>

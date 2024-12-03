@@ -18,5 +18,6 @@ public interface IPromoteService {
 
     void delete(Promote promote);
     
-    List<Promote> findByPercent(int percent);
+	List<Promote> findByVoucherCodeOrPercent(String voucherCode, Integer discountPercent);
+
 }
