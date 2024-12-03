@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chi tiết phương thức thanh toán</title>
+<title>Payment Method Details</title>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -90,7 +90,7 @@ h1 {
 </head>
 <body>
 	<div class="container">
-		<h1>Chi tiết phương thức thanh toán</h1>
+		<h1>Payment Method Details</h1>
 
 		<c:if test="${paymentMethod != null}">
 			<table class="details-table">
@@ -109,19 +109,19 @@ h1 {
 						</c:if></td>
 					<td>
 						<p>
-							<strong>Tên Ngân Hàng:</strong> ${paymentMethod.bankName}
+							<strong>Bank Name:</strong> ${paymentMethod.bankName}
 						</p>
 						<p>
-							<strong>Số Tài Khoản:</strong> ${paymentMethod.accountNumber}
+							<strong>Account Number:</strong> ${paymentMethod.accountNumber}
 						</p>
 						<p>
-							<strong>Chủ Tài Khoản:</strong> ${paymentMethod.accountOwner}
+							<strong>Account Owner:</strong> ${paymentMethod.accountOwner}
 						</p>
 						<p>
-							<strong>Trạng thái:</strong>
+							<strong>Status:</strong>
 							<c:choose>
-								<c:when test="${paymentMethod.status == 1}">Hoạt động</c:when>
-								<c:otherwise>Ngừng hoạt động</c:otherwise>
+								<c:when test="${paymentMethod.status == 1}">Active</c:when>
+								<c:otherwise>Inactive</c:otherwise>
 							</c:choose>
 						</p>
 					</td>
@@ -131,7 +131,8 @@ h1 {
 
 		<div class="details-container">
 			<a href="<%=request.getContextPath()%>/admin/payment-method"
-				class="btn btn-primary">Quay lại</a>
+				class="btn btn-primary">Back</a>
 		</div>
+	</div>
 </body>
 </html>

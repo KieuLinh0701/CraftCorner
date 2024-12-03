@@ -4,42 +4,45 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 <div class="container">
-	<h1 class="text-center mt-5">Chỉnh sửa phương thức thanh toán</h1>
+	<h1 class="text-center mt-5">Edit Payment Method</h1>
 	<form
 		action="${pageContext.request.contextPath}/admin/payment-method/edit"
 		method="post" enctype="multipart/form-data" accept-charset="UTF-8">
 		<input type="hidden" name="id" value="${paymentMethod.id}">
 
 		<div class="form-group">
-			<label for="bankName">Tên phương thức(Ngân hàng):</label> <input
+			<label for="bankName">Method Name(Bank):</label> 
+			<input
 				type="text" class="form-control" id="bankName" name="bankName"
 				value="${paymentMethod.bankName}" required>
 		</div>
 
 		<div class="form-group">
-			<label for="accountNumber">Số tài khoản:</label> <input type="text"
+			<label for="accountNumber">Account Number:</label> 
+			<input type="text"
 				class="form-control" id="accountNumber" name="accountNumber"
 				value="${paymentMethod.accountNumber}" required>
 		</div>
 
 		<div class="form-group">
-			<label for="accountOwner">Chủ tài khoản:</label> <input type="text"
+			<label for="accountOwner">Account Owner:</label> 
+			<input type="text"
 				class="form-control" id="accountOwner" name="accountOwner"
 				value="${paymentMethod.accountOwner}" required>
 		</div>
 
 		<div class="form-group">
-			<label for="status">Trạng thái:</label> <select class="form-control"
+			<label for="status">Status:</label> 
+			<select class="form-control"
 				id="status" name="status">
-				<option value="1" ${paymentMethod.status == 1 ? "selected" : ""}>Hoạt
-					động</option>
-				<option value="0" ${paymentMethod.status == 0 ? "selected" : ""}>Không
-					hoạt động</option>
+				<option value="1" ${paymentMethod.status == 1 ? "selected" : ""}>Active</option>
+				<option value="0" ${paymentMethod.status == 0 ? "selected" : ""}>Inactive</option>
 			</select>
 		</div>
 
 		<div class="form-group">
-			<label for="image">QR Code:</label> <input type="file"
+			<label for="image">QR Code:</label> 
+			<input type="file"
 				class="form-control" id="image" name="image" accept="image/*">
 
 			<c:if test="${not empty paymentMethod.image}">
@@ -51,8 +54,8 @@
 			</c:if>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Cập nhật</button>
+		<button type="submit" class="btn btn-primary">Update</button>
 		<a href="${pageContext.request.contextPath}/admin/payment-method"
-			class="btn btn-secondary">Hủy</a>
+			class="btn btn-secondary">Cancel</a>
 	</form>
 </div>

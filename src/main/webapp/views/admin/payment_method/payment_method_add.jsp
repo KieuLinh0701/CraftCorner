@@ -6,44 +6,49 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 
 <div class="container">
-	<h1 class="text-center mt-5">Thêm Mới Phương Thức Thanh Toán</h1>
+	<h1 class="text-center mt-5">Add New Payment Method</h1>
 
-	<!-- Form thêm phương thức thanh toán -->
+	<!-- Form to add a payment method -->
 	<form
 		action="${pageContext.request.contextPath}/admin/payment-method/add"
 		method="post" enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="bankName">Tên Phương Thức(Ngân Hàng)</label> <input
+			<label for="bankName">Method Name(Bank)</label> 
+			<input
 				type="text" class="form-control" id="bankName" name="bankName"
 				required>
 		</div>
 
 		<div class="form-group">
-			<label for="accountNumber">Số Tài Khoản</label> <input type="text"
+			<label for="accountNumber">Account Number</label> 
+			<input type="text"
 				class="form-control" id="accountNumber" name="accountNumber"
 				required>
 		</div>
 
 		<div class="form-group">
-			<label for="accountOwner">Chủ Tài Khoản</label> <input type="text"
+			<label for="accountOwner">Account Owner</label> 
+			<input type="text"
 				class="form-control" id="accountOwner" name="accountOwner" required>
 		</div>
 
 		<div class="form-group">
-			<label for="status">Trạng Thái</label> <select class="form-control"
+			<label for="status">Status</label> 
+			<select class="form-control"
 				id="status" name="status" required>
-				<option value="1">Hoạt động</option>
-				<option value="0">Không hoạt động</option>
+				<option value="1">Active</option>
+				<option value="0">Inactive</option>
 			</select>
 		</div>
 
 		<div class="form-group">
-			<label for="image">QR code</label> <input type="file"
+			<label for="image">QR Code</label> 
+			<input type="file"
 				class="form-control" id="image" name="image" accept="image/*">
 		</div>
 
-		<button type="submit" class="btn btn-primary">Thêm</button>
+		<button type="submit" class="btn btn-primary">Add</button>
 		<a href="${pageContext.request.contextPath}/admin/payment-method"
-			class="btn btn-default">Quay lại</a>
+			class="btn btn-default">Back</a>
 	</form>
 </div>
