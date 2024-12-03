@@ -11,4 +11,5 @@ public interface IOrderDao {
 	String getLowestRevenueProduct(String periodType, String periodValue);
 	String getMostPurchasedProduct(String periodType, String periodValue);
 	String getLeastPurchasedProduct(String periodType, String periodValue);
+    Object[] getOrderDetailsByPeriod(String periodType, String periodValue);
 }

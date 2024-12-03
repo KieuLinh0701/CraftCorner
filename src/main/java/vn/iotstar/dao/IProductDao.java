@@ -15,4 +15,5 @@ public interface IProductDao {
     void updateProduct(Product product);
     void deleteProduct(Long id);
     List<Product> findProductsByCategory(String category);
+    boolean updateProductQuantity(long productId, int quantity);
 }

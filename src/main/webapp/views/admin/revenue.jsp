@@ -93,9 +93,9 @@
                 ${selectedPeriod} <i class="fa fa-calendar"></i>
             </button>
             <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="#" onclick="changeSelection('Select Date')">Select Date</a></li>
-                <li><a href="#" onclick="changeSelection('Select Month')">Select Month</a></li>
-                <li><a href="#" onclick="changeSelection('Select Year')">Select Year</a></li>
+                <li><a href="#" onclick="changeSelection('Date')">Select Date</a></li>
+                <li><a href="#" onclick="changeSelection('Month')">Select Month</a></li>
+                <li><a href="#" onclick="changeSelection('Year')">Select Year</a></li>
             </ul>
         </div>
 
@@ -176,37 +176,34 @@
             </div>
             <div class="well no-margin no-border">
                 <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-                        <span class="label label-success">
-                        Highest Revenue: </span>
-                        <h3>${highestRevenue}</h3>
+                    <div class="col-md-6">
+                        <div class="well">
+                            <h4>Most Purchased Product: </h4>
+                            <p>${mostPurchasedProduct}</p>
+                        </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-                        <span class="label label-info">
-                        Lowest Revenue: </span>
-                        <h3>${lowestRevenue}</h3>
+                    <div class="col-md-6">
+                        <div class="well">
+                            <h4>Least Purchased Product: </h4>
+                            <p>${leastPurchasedProduct}</p>
+                        </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-                        <span class="label label-danger">
-                        Most Purchased Products: </span>
-                        <h3>${mostPurchasedProduct}</h3>
+                    <div class="col-md-6">
+                        <div class="well">
+                            <h4>Highest Revenue Product: </h4>
+                            <p>${highestRevenueProduct}</p>
+                        </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6 text-stat">
-                        <span class="label label-warning">
-                        Least Purchased Products: </span>
-                        <h3>${leastPurchasedProduct}</h3>
-                    </div>
+                    <div class="col-md-6">
+                        <div class="well">
+                            <h4>Lowest Revenue Product: </h4>
+                            <p>${lowestRevenueProduct}</p>
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div>
     </div>
-    <!-- End: life time stats -->
 
-    <script>
-        // Thay đổi text của dropdown khi chọn option
-        function changeSelection(selectedOption) {
-            document.getElementById("dropdownButton").innerHTML = selectedOption + ' <i class="fa fa-calendar"></i>';
-        }
-    </script>
 </body>
 </html>

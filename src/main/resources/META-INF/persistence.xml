@@ -8,16 +8,19 @@
 	<persistence-unit name="DBMSSQL">
 		<class>vn.iotstar.entity.Role</class>
 		<class>vn.iotstar.entity.User</class>
+		<class>vn.iotstar.entity.Product</class>
+		<class>vn.iotstar.entity.Category</class>
+		<class>vn.iotstar.entity.Order</class>
+		<class>vn.iotstar.entity.OrderDetail</class>
 		<properties>
 			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:sqlserver://localhost:53734;databaseName=CraftCornerDB" />
-				<!-- value="jdbc:sqlserver://LAPTOP-D9J937E4:1433;databaseName=CraftCornerDB" /> -->
+				value="jdbc:sqlserver://localhost:54390;databaseName=CraftCornerDB" />
 			<property name="jakarta.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="jakarta.persistence.jdbc.user" value="sa" />
 			<property name="jakarta.persistence.jdbc.password"
 				value="danhtan" />
-				<!-- value="0123456789" />	 -->
+
 				
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />

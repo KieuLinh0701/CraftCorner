@@ -67,7 +67,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Product Management</a></li>
 						<li><a href="#">Category Management</a></li>
-						<li><a href="#">Inventory Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/warehouse">Inventory Management</a></li>
+
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
@@ -76,7 +77,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="${URL}admin/payment-method"> Payment Method
 						</a></li>
-						<li><a href="#">Revenue Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/revenue">Revenue Management</a></li>
 						<li><a href="#">Transaction History</a></li>
 					</ul></li>
 

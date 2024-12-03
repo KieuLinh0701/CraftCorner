@@ -10,6 +10,7 @@ public interface IProductService {
     void addProduct(Product product);
     void updateProduct(Product product);
     void deleteProduct(Long id);
+    boolean updateProductQuantity(long productId, int quantity);
     boolean isSameCategory(Product p1, Product p2);
     List<Product> findProductsByCategory(String category);
 }

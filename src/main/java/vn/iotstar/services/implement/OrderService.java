@@ -37,4 +37,14 @@ public class OrderService implements IOrderService{
     public String getLeastPurchasedProduct(String periodType, String periodValue) {
         return orderDao.getLeastPurchasedProduct(periodType, periodValue);
     }
+    @Override
+    public Object[] getOrderDetailsByPeriod(String periodType, String periodValue) {
+        try {
+            // Gọi phương thức của DAO để lấy số lượng đơn hàng và tổng doanh thu
+            return orderDao.getOrderDetailsByPeriod(periodType, periodValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error retrieving order details by period", e);
+        }
+    }
 }
