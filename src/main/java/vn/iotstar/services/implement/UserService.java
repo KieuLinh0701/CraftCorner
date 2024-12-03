@@ -95,4 +95,14 @@ public class UserService implements IUserService{
 	public void insertAdmin(User user) {
 		userDao.insert(user);
 	}
+
+	@Override
+	public List<User> findByName(int page, int pageSize, String keyword) {
+		return userDao.findByName(page, pageSize, keyword);
+	}
+
+	@Override
+	public int countUsers() {
+		return userDao.count();
+	}
 }

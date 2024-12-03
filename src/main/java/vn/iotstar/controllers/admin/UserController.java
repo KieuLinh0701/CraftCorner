@@ -45,7 +45,7 @@ public class UserController extends HttpServlet{
             req.setAttribute("user", user);
             req.getRequestDispatcher("/views/useredit.jsp").forward(req, resp);
         } else if (url.contains("/admin/user/add")) {
-            req.getRequestDispatcher("/views/useradd.jsp").forward(req, resp);
+            req.getRequestDispatcher("/views/admin/UserManagement/useradd.jsp").forward(req, resp);
         }
 //        else if (url.contains("/admin/user/delete")) {
 //            int id = Integer.parseInt(req.getParameter("id"));

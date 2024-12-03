@@ -33,4 +33,6 @@ public interface IUserService {
 	List<User> findAllCustomers();
 	List<User> findAllAdmin();
 	void insertAdmin(User user);
+	List<User> findByName(int page, int pageSize, String keyword); // Add this line
+	int countUsers(); // Count all users
 }

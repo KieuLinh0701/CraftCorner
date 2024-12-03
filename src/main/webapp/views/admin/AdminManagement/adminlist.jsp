@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <a class="btn btn-default add2cart" href="${pageContext.request.contextPath }/views/admin/AdminManagement/adminadd.jsp">Add
-	Category</a>
+	Admin</a>
 
 <div class="col-md-12 col-sm-12">
-	<h1>Shopping cart</h1>
+	<h1>List Addmin Accounts</h1>
 	<div class="goods-page">
 		<div class="goods-data clearfix">
 			<div class="table-wrapper-responsive">
@@ -24,7 +24,11 @@
 					<c:forEach items="${listAdmins}" var="ad" varStatus="STT">
 					<td class="goods-page-description">${ad.id}</td>
 					<td>${ad.fullname}</td>
-					<td class="goods-page-image"><c:choose>
+					<td>
+    <img src="${pageContext.request.contextPath}/assets/img/avatarAdmin.jpg" alt="Image" style="width: 100px; height: 100px;">
+</td>
+
+					<%-- <td class="goods-page-image"><c:choose>
 									<c:when test="${ad.image.startsWith('https')}">
 										<!-- cate.images: lấy từ lớp Category -->
 										<c:set var="imgUrl" value="${ad.image}" />
@@ -33,7 +37,7 @@
 										<!-- /image: truyền đến controller image với tham số truy vấn fname yêu cầu GET -->
 										<c:url var="imgUrl" value="/image?fname=${ad.image}" />
 									</c:otherwise>
-								</c:choose> <img height="150" width="200" src="${imgUrl}" /></td>
+								</c:choose> <img height="150" width="200" src="${imgUrl}" /></td> --%>
 								
 					<td class="goods-page-description">${ad.status}</td>
 					<td class="goods-page-description">${ad.createDate}</td>

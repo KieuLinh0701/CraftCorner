@@ -31,41 +31,50 @@
 <!-- BEGIN HEADER -->
 <div class="header">
 	<div class="container">
-		<a class="site-logo" href="${pageContext.request.contextPath}/admin/home"><img
+		<a class="site-logo"
+			href="${pageContext.request.contextPath}/admin/home"><img
 			src="${URL}assets/frontend/layout/img/logos/logo2.png"
 			alt="Carft Corner"></a> <a href="javascript:void(0);"
 			class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
 		<!-- BEGIN CART -->
 		<div class="top-cart-block">
-		    <div class="top-cart-info">
-		        <c:choose>
-		            <c:when test="${sessionScope.cartItemCount != null && sessionScope.cartItemCount > 0}">
-		                <a href="${pageContext.request.contextPath}/admin/cart"
-		                   class="top-cart-info-count">${sessionScope.cartItemCount} items</a>
-		            </c:when>
-		            <c:otherwise>
-		                <a href="${pageContext.request.contextPath}/admin/cart"
-		                   class="top-cart-info-count">0 items</a>
-		            </c:otherwise>
-		        </c:choose>
-		    </div>
-		    <i class="fa fa-shopping-cart" style="background-color: black"></i>
+			<div class="top-cart-info">
+				<c:choose>
+					<c:when
+						test="${sessionScope.cartItemCount != null && sessionScope.cartItemCount > 0}">
+						<a href="${pageContext.request.contextPath}/admin/cart"
+							class="top-cart-info-count">${sessionScope.cartItemCount}
+							items</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${pageContext.request.contextPath}/admin/cart"
+							class="top-cart-info-count">0 items</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<i class="fa fa-shopping-cart" style="background-color: black"></i>
 		</div>
 		<!-- END CART -->
 
 		<!-- BEGIN NAVIGATION -->
 		<div class="header-navigation">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/admin/home"> Home </a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/home">
+						Home </a></li>
+
 				<li class="admin-theme dropdown active"><a
-					class="dropdown-toggle" data-toggle="dropdown" href="#">
-						Product</a>
+					class="dropdown-toggle" data-toggle="dropdown" href="#">Product</a>
 					<ul class="dropdown-menu">
-						<li><a href="${pageContext.request.contextPath}/admin/products">Product Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/categories">Category Management</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/products">Product
+								Management</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/categories">Category
+								Management</a></li>
 						<li><a href="#">Inventory Management</a></li>
 					</ul></li>
+
 
 				<li class="admin-theme dropdown active"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -82,27 +91,63 @@
 						Content</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Blog Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/designs">Design Management</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/designs">Design
+								Management</a></li>
 					</ul></li>
 
 				<li class="admin-theme dropdown active"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#">
 						Account</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Customer Management</a></li>
-						<li><a href="#">Employee Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/users">Customer Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/adminsmanage">Admin Management</a></li>
 					</ul></li>
-					
-				<li><a href="#"> Order</a></li>
+
+				<li><a href="${pageContext.request.contextPath}/admin/orders"> Order</a></li>
 
 
 				<li><a href="${URL}admin/promote"> Promotion</a></li>
 
-				<li><a
-					href="${URL}admin/appointment-calendar"> Appointment</a></li>
+				<li><a href="${URL}admin/appointment-calendar"> Appointment</a></li>
 			</ul>
 		</div>
 	</div>
 	<!-- END NAVIGATION -->
 </div>
 <!-- Header END -->
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+		const dropdowns = document.querySelectorAll(".dropdown");
+
+		dropdowns.forEach(function(dropdown) {
+			dropdown.addEventListener("click", function(e) {
+				e.stopPropagation(); // Ngăn chặn sự kiện lan ra ngoài
+
+				// Đóng tất cả các menu khác
+				dropdowns.forEach(function(otherDropdown) {
+					const menu = otherDropdown.querySelector(".dropdown-menu");
+					if (menu && otherDropdown !== dropdown) {
+						menu.style.display = "none";
+					}
+				});
+
+				// Mở hoặc đóng menu hiện tại
+				const menu = this.querySelector(".dropdown-menu");
+				menu.style.display = menu.style.display === "block" ? "none"
+						: "block";
+			});
+		});
+
+		// Đóng tất cả các menu khi click ngoài vùng dropdown
+		document.addEventListener("click", function() {
+			dropdowns.forEach(function(dropdown) {
+				const menu = dropdown.querySelector(".dropdown-menu");
+				if (menu) {
+					menu.style.display = "none";
+				}
+			});
+		});
+	});
+</script>

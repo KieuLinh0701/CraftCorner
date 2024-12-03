@@ -45,12 +45,13 @@ public class Constant {
 	public static final String UPLOAD_DIRECTORY = "C:\\upload";
 	public static final String DEFAULT_FILENAME = "default.file";
 
+
 	// Đường dẫn thư mục lưu hình ảnh (thay đổi theo môi trường của bạn)
     public static final String DIR = "C:\\upload";
     public static final String USER_MANAGEMENT = "/path/to/user_management.jsp";
     public static final String USER_ADD = "/WEB-INF/views/admin/userAdd.jsp";
     public static final String USER_EDIT = "/WEB-INF/views/admin/user/edit.jsp";
-    
+    //public static final String UPLOAD_DIRECTORY = "E:\\upload";
     
 	public static final String MAKE_APPOINTMENT = "/views/makeAppointment.jsp";
 	public static final String LIST_APPOINTMENT = "/views/listAppointment.jsp";

@@ -94,7 +94,6 @@ public class UserDao implements IUserDao {
 		try {
 			trans.begin();
 			enma.persist(user);
-			User newuser = enma.merge(user);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -191,4 +190,49 @@ public class UserDao implements IUserDao {
             em.close();
         }
     }
+	
+	public List<User> findByName(int page, int pageSize, String keyword) {
+	    EntityManager enma = JPAConfig.getEntityManager();
+	    String queryStr = "SELECT u FROM User u WHERE u.fullname LIKE :fullname";
+	    TypedQuery<User> query = enma.createQuery(queryStr, User.class);
+	    
+	    // Thiết lập tham số cho truy vấn
+	    query.setParameter("fullname", "%" + keyword + "%");
+	    query.setFirstResult((page - 1) * pageSize);
+	    query.setMaxResults(pageSize);
+	    
+	    return query.getResultList();
+	}
+
+	@Override
+	public List<User> findByName(String keyword) {
+		EntityManager enma = JPAConfig.getEntityManager();
+	    String jpql = "SELECT u FROM User u WHERE u.fullname LIKE :fullname";
+	    TypedQuery<User> query = enma.createQuery(jpql, User.class);
+	    
+	    // Thiết lập tham số cho truy vấn
+	    query.setParameter("fullname", "%" + keyword + "%");
+	    
+	    return query.getResultList();
+	}
+
+	@Override
+	public int countUser(int pageSize) {
+		EntityManager enma = JPAConfig.getEntityManager();
+	    String countQuery = "SELECT COUNT(u) FROM User u";
+	    Long count = (Long) enma.createQuery(countQuery).getSingleResult(); // Lấy số lượng người dùng
+	    int totalPages = (int) Math.ceil(count.doubleValue() / (double) pageSize); // Tính tổng số trang
+	    return totalPages;
+	}
+
+	@Override
+	public int countUser(int pageSize, String keyword) {
+		EntityManager enma = JPAConfig.getEntityManager();
+	    String countQuery = "SELECT COUNT(u) FROM User u WHERE u.fullname LIKE :fullname"; // Truy vấn đếm theo tên người dùng
+	    Query query = enma.createQuery(countQuery);
+	    query.setParameter("fullname", "%" + keyword + "%"); // Thiết lập tham số cho truy vấn
+	    Long count = (Long) query.getSingleResult(); // Lấy số lượng người dùng phù hợp
+	    int totalPages = (int) Math.ceil(count.doubleValue() / (double) pageSize); // Tính tổng số trang
+	    return totalPages;
+	}
 }

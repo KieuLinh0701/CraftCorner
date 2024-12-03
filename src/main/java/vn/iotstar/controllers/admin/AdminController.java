@@ -10,12 +10,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import vn.iotstar.entity.Role;
 import vn.iotstar.entity.User;
 import vn.iotstar.services.*;
+import vn.iotstar.services.implement.RoleService;
 import vn.iotstar.services.implement.UserService;
 import vn.iotstar.utils.*;
 
@@ -31,7 +33,7 @@ public class AdminController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
     private IUserService userService = new UserService();
-
+    private IRoleService roleService = new RoleService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
@@ -44,7 +46,7 @@ public class AdminController extends HttpServlet{
         else if (url.contains("/admin/adminsmanage/add")) {
             req.getRequestDispatcher("/views/admin/AdminManagement/adminadd.jsp").forward(req, resp);
         }
-        else if (url.contains("/admin/user/edit")) {
+        else if (url.contains("/admin/adminsmanage/edit")) {
             int id = Integer.parseInt(req.getParameter("id"));
             User user = userService.findById(id);
             req.setAttribute("user", user);
@@ -80,43 +82,50 @@ public class AdminController extends HttpServlet{
     	String url = req.getRequestURI();
     	///admin/adminsmanage/insert
         try {
-            if (url.contains("/admin/adminsmanage/insert")) {
+            if (url.contains("/admin/AdminManagement/insert")) {
                 // Lấy dữ liệu từ form
             	User user = new User();
-                String fullname = req.getParameter("fullname");
-                String email = req.getParameter("email");
-                String phone = req.getParameter("phone");
-                String password = req.getParameter("password");
+            	String email = req.getParameter("email");
+        		String fullname = req.getParameter("fullname");
+        		String phone = req.getParameter("phone");
+        		String password = req.getParameter("password");
+         		String address_id = req.getParameter("address_id");
                 int status = Integer.parseInt(req.getParameter("status"));
-                
-                
+                int role = Integer.parseInt(req.getParameter("role"));
+                //int status = (statusStr != null && !statusStr.isEmpty()) ? Integer.parseInt(statusStr) : 1; // Mặc định status = 1
+                //String roleid = req.getParameter("role");
+               // int role = (roleid != null && !roleid.isEmpty()) ? Integer.parseInt(roleid) : 1; // Mặc định status = 1
+                // Tạo đối tượng User
                 user.setFullname(fullname);
                 user.setEmail(email);
                 user.setPhone(phone);
                 user.setPassword(password);
+                user.setPassword(address_id);
                 user.setStatus(status);
-                user.setCreateDate(LocalDateTime.now()); // Gán ngày tạo hiện tại
-
-//                // Thêm role vào user
-//                Role roleObj = new Role();
-//                roleObj.setId(1); // Set ID của Role Admin
-//                user.setRole(roleObj);
-
-                // Upload ảnh nếu có
-                String uploadPath = getServletContext().getRealPath("/") + "uploads";
+                user.setStatus(role);
+                
+                String fname = "";
+                String uploadPath = Constant.UPLOAD_DIRECTORY;
                 File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) uploadDir.mkdir();
-
-                Part part = req.getPart("image");
-                if (part != null && part.getSize() > 0) {
-                    String fileName = System.currentTimeMillis() + "_" + part.getSubmittedFileName();
-                    part.write(uploadPath + "/" + fileName);
-                    user.setImage(fileName);
-                } else {
-                    user.setImage("default-avatar.png"); // Ảnh mặc định nếu không upload
+                try {
+                	Part part = req.getPart("image");
+                	if(part.getSize()>0) {
+                		String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                		int index = fileName.lastIndexOf(".");
+                		String ext = fileName.substring(index+1);
+                		fname = System.currentTimeMillis() + "." + ext;
+                		// upload file 
+                		part.write(uploadPath + "/" + fileName);
+                		// ghi tên file vào data
+                	}else {
+                		user.setImage("avatar.png");
+                	}
+                	
+                }catch (Exception ex){
+                	ex.printStackTrace();
                 }
-
-                // Gọi service để lưu vào cơ sở dữ liệu
+                
                 userService.insert(user);
 
                 // Điều hướng về danh sách users

@@ -33,4 +33,9 @@ public interface IUserDao {
 	
 	List<User> findAllCustomers();
 	List<User> findAllAdmin();
+	List<User> findByName(int page, int pagesize, String keyword);
+	List<User> findByName(String keyword);
+	int countUser(int pageSize);
+	int countUser(int pageSize, String keyword);
+	
 }
