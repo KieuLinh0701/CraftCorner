@@ -45,7 +45,7 @@ public class CalendarAppointmentController extends HttpServlet{
         for (Map.Entry<String, Integer> entry : groupedAppointments.entrySet()) {
             String date = entry.getKey();
             int count = entry.getValue();
-            String title = count + " người đặt lịch"; // Tạo tiêu đề
+            String title = count + " scheduler"; // Tạo tiêu đề
 
             String url = "/admin/appointment?date=" + date;
 

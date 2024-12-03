@@ -8,18 +8,18 @@
 <div class="col-md-12 col-sm-12">
 	<div class="content-form-page">
 		<div class="row">
-			<h3 class="text-center">DANH SÁCH ĐẶT LỊCH CỦA KHÁCH HÀNG</h3>
+			<h3 class="text-center">CUSTOMER APPOINTMENT LIST</h3>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Khách hàng</th>
-						<th>Thời gian hẹn</th>
-						<th>Nội dung</th>
-						<th>Người tư vấn</th>
-						<th>Trạng thái</th>
-						<th>Ngày tạo</th>
-						<th>Hành động</th>
+						<th>Customer</th>
+						<th>Appointment Time</th>
+						<th>Description</th>
+						<th>Consultant</th>
+						<th>Status</th>
+						<th>Created Date</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -38,13 +38,13 @@
                                 </c:if></td>
 							<td><c:choose>
 									<c:when test="${appointment.status == 'PENDING'}">
-										<span class="label label-primary">Đang chờ xác nhận</span>
+										<span class="label label-primary">Pending Confirmation</span>
 									</c:when>
 									<c:when test="${appointment.status == 'ACCEPT'}">
-										<span class="label label-success">Đã xác nhận</span>
+										<span class="label label-success">Confirmed</span>
 									</c:when>
 									<c:when test="${appointment.status == 'CANCEL'}">
-										<span class="label label-danger"> Đã huỷ</span>
+										<span class="label label-danger">Cancelled</span>
 									</c:when>
 								</c:choose></td>
 							<td>${appointment.createdAt}</td>
@@ -52,13 +52,13 @@
 									<button style="color: white"
 										data-id="${appointment.appointmentId}"
 										class="btn btn-success confirm" data-toggle="modal"
-										data-target="#exampleModalCenter">Xác nhận</button>
+										data-target="#exampleModalCenter">Confirm</button>
 								</c:if> <c:if test="${appointment.status == 'PENDING'}">
 									<a style="color: white"
 										href="${pageContext.request.contextPath}/admin/appointment/cancel?appointmentId=${appointment.appointmentId}"
 										class="btn btn-warning"
-										onclick="return confirm('Bạn có chắc muốn huỷ lịch?')">
-										Huỷ lịch </a>
+										onclick="return confirm('Are you sure you want to cancel the appointment?')">
+										Cancel </a>
 								</c:if> <!-- Modal -->
 								<div class="modal fade" id="exampleModalCenter" tabindex="-1"
 									role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -66,7 +66,7 @@
 									<div class="modal-dialog modal-dialog-centered" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title">Xác nhận đặt lịch</h5>
+												<h5 class="modal-title">Confirm Appointment</h5>
 												<button type="button" class="close" data-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
@@ -79,7 +79,7 @@
 												<div class="modal-body">
 													<div class="form-group">
 														<label for="consultant" class="col-lg-4 control-label">
-															Chọn người tư vấn <span class="require">*</span>
+															Select Consultant <span class="require">*</span>
 														</label>
 														<div class="col-lg-8">
 															<select class="form-control" id="consultant"
@@ -94,7 +94,7 @@
 
 												</div>
 												<div class="modal-footer">
-													<button type="submit" class="btn btn-success">Lưu</button>
+													<button type="submit" class="btn btn-success">Save</button>
 												</div>
 											</form>
 										</div>
