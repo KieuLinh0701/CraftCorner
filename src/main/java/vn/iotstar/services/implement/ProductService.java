@@ -2,6 +2,7 @@ package vn.iotstar.services.implement;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import vn.iotstar.dao.IDesignDao;
 import vn.iotstar.dao.IProductDao;
 import vn.iotstar.dao.implement.DesignDao;
@@ -74,5 +75,39 @@ public class ProductService implements IProductService {
 	public int productCount(int category_id) {
 		return productDao.productCount(category_id);
 	}
+=======
+import jakarta.persistence.EntityManager;
+import vn.iotstar.configs.JPAConfig;
+import vn.iotstar.dao.IProductDao;
+import vn.iotstar.dao.implement.ProductDao;
+import vn.iotstar.entity.Product;
+import vn.iotstar.services.IProductService;
+
+public class ProductService implements IProductService {
+    
+    private IProductDao productDao;
+    
+    public ProductService() {
+        this.productDao = new ProductDao();
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return productDao.getAllProducts();
+    }
+    
+    
+    public Product getProductById(int productId) {
+        // Logic to fetch the product by ID, for example, using JPA or JDBC
+        // Assuming the use of JPA:
+        EntityManager em = JPAConfig.getEntityManager();
+        return em.find(Product.class, productId);
+    }
+    
+    @Override
+    public List<Product> getRelatedProducts(int productId) {
+        return productDao.getRelatedProducts(productId);
+    }
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 
 }

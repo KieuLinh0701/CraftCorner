@@ -10,12 +10,17 @@
 		<class>vn.iotstar.entity.User</class>	
     	<class>vn.iotstar.entity.Address</class>
 		<properties>
+<<<<<<< HEAD
 		
 		<property name="jakarta.persistence.jdbc.url"
+=======
+			<!-- <property name="jakarta.persistence.jdbc.url"
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 				value="jdbc:sqlserver://LAPTOP-D9J937E4:1433;databaseName=CraftCornerDB" />
 			<property name="jakarta.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="jakarta.persistence.jdbc.user" value="sa" />
+<<<<<<< HEAD
 			<property name="jakarta.persistence.jdbc.password" value="0123456789" />
 		
 
@@ -26,6 +31,20 @@
 <!-- 			<property name="jakarta.persistence.jdbc.user" value="sa" /> -->
 <!-- 			<property name="jakarta.persistence.jdbc.password" value="05052004" /> -->
 
+=======
+			<property name="jakarta.persistence.jdbc.password" value="0123456789" /> -->
+			
+<!-- 			<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=CozyCorner" />  -->
+<!--  			<property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />  -->
+<!--  			<property name="jakarta.persistence.jdbc.user" value="sa" />  -->
+<!-- 			<property name="jakarta.persistence.jdbc.password" value="217177" />  -->
+
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=CraftCornerDB" /> 
+ 			<property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /> 
+ 			<property name="jakarta.persistence.jdbc.user" value="sa" /> 
+			<property name="jakarta.persistence.jdbc.password" value="yenkhang" /> 
+				
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

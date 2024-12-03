@@ -19,6 +19,12 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
+=======
+                                
+        
+        
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
                                 
         

@@ -1,6 +1,7 @@
 package vn.iotstar.services;
 
 import java.util.List;
+<<<<<<< HEAD
 
 import vn.iotstar.entity.Designs;
 import vn.iotstar.entity.Product;
@@ -31,4 +32,12 @@ List<Product> findAll();
 	
 	int productCount(int category_id);
 
+=======
+import vn.iotstar.entity.Product;
+
+public interface IProductService {
+	List<Product> getAllProducts();
+	List<Product> getRelatedProducts(int productId);
+    Product getProductById(int productId); 
+>>>>>>> bb464d9d454c6b4c10a0818a852cbe48049708fa
 }
